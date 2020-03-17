@@ -12,5 +12,4 @@
 ## References
 
 - [Managing Advanced Kubernetes Logging and Tracing](https://app.pluralsight.com/library/courses/managing-advanced-kubernetes-logging-tracing/table-of-contents)
-
 - [Monitoring and Alerting with Prometheus](https://www.udemy.com/course/monitoring-and-alerting-with-prometheus)
