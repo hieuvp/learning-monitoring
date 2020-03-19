@@ -5,12 +5,12 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Monitoring and Alerting with Prometheus](#monitoring-and-alerting-with-prometheus)
+- [Prometheus](#prometheus)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### Monitoring and Alerting with Prometheus
+### Prometheus
 
 1. [ ] Introduction to The Course
 1. [ ] Introduction to Prometheus
