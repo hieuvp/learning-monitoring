@@ -10,7 +10,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### Prometheus
+## Prometheus
 
 1. [ ] Introduction to The Course
 1. [ ] Introduction to Prometheus
