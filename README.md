@@ -9,6 +9,13 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+1. [ ] Introduction to the course
+1. [ ] Introduction to Prometheus
+1. [ ] Monitoring
+1. [ ] Alerting
+1. [ ] Use Cases
+1. [ ] Thank you
+
 ## References
 
 - [Monitoring and Alerting with Prometheus](https://www.udemy.com/course/monitoring-and-alerting-with-prometheus)
