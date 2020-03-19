@@ -12,7 +12,7 @@
 
 ### Monitoring and Alerting with Prometheus
 
-1. [ ] Introduction to the course
+1. [ ] Introduction to The Course
 1. [ ] Introduction to Prometheus
 1. [ ] Monitoring
 1. [ ] Alerting
