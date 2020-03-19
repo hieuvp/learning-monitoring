@@ -18,7 +18,7 @@
 1. [ ] Alerting
 1. [ ] Internals
 1. [ ] Use Cases
-1. [ ] Thank you
+1. [ ] Thank You
 
 ## References
 
