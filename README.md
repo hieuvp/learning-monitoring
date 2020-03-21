@@ -14,7 +14,8 @@
 
 > The Prometheus monitoring system and time series database.
 
-Introduction to The Course
+- Introduction to the course
+  Introduction
 
 - <https://prometheus.io/>
 - <https://github.com/prometheus/prometheus>
@@ -42,11 +43,8 @@ Course Objectives
 1. [ ] [Use Cases](prometheus-use-cases/README.md)
 1. [ ] Thank You
 
-Introduction to the course
-Introduction
-
-Thank you!
-Bonus Lecture
+- Thank you
+  Bonus Lecture
 
 ## References
 
