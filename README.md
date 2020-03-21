@@ -26,62 +26,24 @@ Introduction to The Course
 - Joined the Cloud Native Computing Foundation (CNCF) in 2016
 - Ideal for monitoring on premise as well as cloud workloads
 
-1. Introduction
-1. [ ] Monitoring
-1. [ ] Alerting
-1. [ ] Internals
-1. [ ] Use Cases
+Course Objectives
+
+- To be able to use Prometheus
+- To get familiar with the Prometheus ecosystem
+- To setup a monitoring platform using
+  - Prometheus
+- To create alerts in Prometheus
+- To be able to query Prometheus data
+
+1. [ ] [Introduction](prometheus-introduction/README.md)
+1. [ ] [Monitoring](prometheus-monitoring/README.md)
+1. [ ] [Alerting](prometheus-alerting/README.md)
+1. [ ] [Internals](prometheus-internals/README.md)
+1. [ ] [Use Cases](prometheus-use-cases/README.md)
 1. [ ] Thank You
-
-- Create an outline for each section above
-
-- Course Overview
 
 Introduction to the course
 Introduction
-
-Introduction to Prometheus
-Introduction to Prometheus
-Prometheus Installation
-Demo: Prometheus Installation
-Demo: Grafana with Prometheus Installation
-Basic Concepts
-Prometheus Configuration
-Demo: Prometheus Config file
-Monitoring Nodes (Servers) with Prometheus
-Demo: node exporter for Linux
-Node Exporter for Windows (WMI Exporter)
-Prometheus Architecture
-
-Monitoring
-Introduction to Monitoring
-Client Libraries
-Pushing Metrics
-Querying
-Service Discovery
-Exporters
-
-Alerting
-Introduction to Alerting
-Setting Up Alerts
-
-Internals
-Prometheus Storage
-Prometheus Security
-Demo: TLS & Authentication on Prometheus Server
-Demo: Mutual TLS for Prometheus Targets
-
-Use Cases
-Monitoring a web application
-Demo: Monitoring a web application
-Demo: Calculating Apdex score
-Cloudwatch Exporter
-Grafana Provisioning
-Demo: Grafana Provisioning
-Scraping Kubernetes with Prometheus
-Consul Integration with Prometheus
-Demo: Consul Integration with Prometheus
-EC2 Auto Discovery
 
 Thank you!
 Bonus Lecture
