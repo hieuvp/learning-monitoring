@@ -19,6 +19,8 @@
 
 - [Grafana](https://grafana.com/)
   is the open source analytics and monitoring solution for every database.
+  It allows you to query, visualize and alert on metrics and logs no matter where they are stored.
+  Grafana is the only tool that can combine data from so many places into a single dashboard.
 
 - [Node Exporter](https://github.com/prometheus/node_exporter)
   is a Prometheus exporter for hardware and OS metrics exposed by \*NIX kernels,
