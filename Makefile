@@ -1,3 +1,7 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Standard
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .PHONY: fmt
 fmt:
 	@printf "\n"
@@ -37,6 +41,16 @@ clean:
 	@printf "\n"
 	scripts/clean.sh
 	@printf "\n"
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Prometheus
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.PHONY: terraform-prometheus-plan
+terraform-prometheus-plan:
+	cd terraform-prometheus \
+	&& terraform plan
 
 .PHONY: terraform-prometheus-apply
 terraform-prometheus-apply:
