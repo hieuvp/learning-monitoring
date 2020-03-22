@@ -7,7 +7,9 @@ locals {
   environment = "Test"
 
   instance_type = "t2.micro"
-  ami           = "ami-0cbc6aae997c6538a"
+
+  # Amazon Linux 2 AMI
+  ami = "ami-0cbc6aae997c6538a"
 }
 
 # Create an EC2 resource on AWS
