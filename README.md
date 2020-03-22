@@ -19,6 +19,7 @@
 
 - <https://prometheus.io/>
 - <https://github.com/prometheus/prometheus>
+- <https://grafana.com/>
 
 - Open-source monitoring solution & time series database
 - Was built by Soundcloud
