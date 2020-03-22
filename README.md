@@ -15,12 +15,11 @@
 > The Prometheus monitoring system and time series database.
 
 - <https://prometheus.io/>
-- <https://github.com/prometheus/prometheus>
 - <https://grafana.com/>
 - <https://github.com/prometheus/node_exporter>
 - <https://github.com/prometheus/alertmanager>
 
-- A [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`) graduated project.
+- Prometheus is a [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`) graduated project.
 
 1. [ ] [Introduction](prometheus-introduction/README.md)
 1. [ ] [Monitoring](prometheus-monitoring/README.md)
