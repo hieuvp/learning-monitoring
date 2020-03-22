@@ -12,12 +12,12 @@
 
 ## Prometheus and Its Ecosystem
 
-- [Prometheus](https://prometheus.io/)
+- [Prometheus](https://prometheus.io)
   is an open-source systems monitoring and alerting toolkit.
   It joined the [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`)
   in 2016 as the second hosted project, after Kubernetes.
 
-- [Grafana](https://grafana.com/)
+- [Grafana](https://grafana.com)
   is a tool that can combine data from many places into a single dashboard.
   It allows you to query, visualize and alert on metrics and logs no matter where they are stored.
 
