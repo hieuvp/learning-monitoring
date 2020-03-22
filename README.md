@@ -20,21 +20,9 @@
 - <https://github.com/prometheus/node_exporter>
 - <https://github.com/prometheus/alertmanager>
 
-- Open-source monitoring solution & time series database
 - Was built by Soundcloud
-- Very active developer and user community
-- Now it's a standalone open source project
 - Joined the Cloud Native Computing Foundation (CNCF) in 2016
 - Ideal for monitoring on premise as well as cloud workloads
-
-Course Objectives
-
-- To be able to use Prometheus
-- To get familiar with the Prometheus ecosystem
-- To setup a monitoring platform using
-  - Prometheus
-- To create alerts in Prometheus
-- To be able to query Prometheus data
 
 1. [ ] [Introduction](prometheus-introduction/README.md)
 1. [ ] [Monitoring](prometheus-monitoring/README.md)
