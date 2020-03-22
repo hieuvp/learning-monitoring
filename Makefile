@@ -33,3 +33,7 @@ clean:
 	@printf "\n"
 	$(MAKEFILE_SCRIPT_PATH)/clean-terraform.sh
 	@printf "\n"
+
+	@printf "\n"
+	scripts/clean.sh
+	@printf "\n"

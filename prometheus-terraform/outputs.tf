@@ -1,5 +1,3 @@
-#Module      : EC2
-#Description : Terraform module to create an EC2 resource on AWS with Elastic IP Addresses #              and Elastic Block Store.
 output "instance_id" {
   value       = aws_instance.default.*.id
   description = "The instance ID."
