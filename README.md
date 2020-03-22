@@ -12,9 +12,11 @@
 
 ## Prometheus
 
-> The [Prometheus](https://prometheus.io/) monitoring system and time series database.
-
-- Prometheus is a [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`) graduated project.
+- [Prometheus](https://prometheus.io/)
+  is an open-source systems monitoring and alerting toolkit originally built at SoundCloud.
+  It is now a standalone open source project and maintained independently of any company.
+  Prometheus joined the [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`)
+  in 2016 as the second hosted project, after Kubernetes.
 
 - [Grafana](https://grafana.com/)
   is the open source analytics and monitoring solution for every database.
@@ -23,7 +25,7 @@
   is a Prometheus exporter for hardware and OS metrics exposed by \*NIX kernels,
   written in Go with pluggable metric collectors.
 
-- The Prometheus [Alertmanager](https://github.com/prometheus/alertmanager)
+- [Alertmanager](https://github.com/prometheus/alertmanager)
   handles alerts sent by client applications such as the Prometheus server.
   It takes care of deduplicating, grouping, and routing them
   to the correct receiver integrations such as email, PagerDuty, or OpsGenie.
