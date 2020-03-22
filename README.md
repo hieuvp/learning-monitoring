@@ -13,9 +13,8 @@
 ## Prometheus and Its Ecosystem
 
 - [Prometheus](https://prometheus.io/)
-  is an open-source systems monitoring and alerting toolkit originally built at SoundCloud.
-  It is now a standalone open source project and maintained independently of any company.
-  Prometheus joined the [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`)
+  is an open-source systems monitoring and alerting toolkit.
+  It joined the [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`)
   in 2016 as the second hosted project, after Kubernetes.
 
 - [Grafana](https://grafana.com/)
