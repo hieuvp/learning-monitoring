@@ -20,9 +20,7 @@
 - <https://github.com/prometheus/node_exporter>
 - <https://github.com/prometheus/alertmanager>
 
-- Was built by Soundcloud
-- Joined the Cloud Native Computing Foundation (CNCF) in 2016
-- Ideal for monitoring on premise as well as cloud workloads
+- A [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`) graduated project.
 
 1. [ ] [Introduction](prometheus-introduction/README.md)
 1. [ ] [Monitoring](prometheus-monitoring/README.md)
