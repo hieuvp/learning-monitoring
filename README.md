@@ -44,9 +44,6 @@ Course Objectives
 1. [ ] [Use Cases](prometheus-use-cases/README.md)
 1. [ ] Thank You
 
-- Thank you
-  Bonus Lecture
-
 ## References
 
 - [Monitoring and Alerting with Prometheus](https://www.udemy.com/course/monitoring-and-alerting-with-prometheus)
