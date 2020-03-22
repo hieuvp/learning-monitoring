@@ -9,3 +9,4 @@
 
 # Terraform - Safely and Predictably Create, Change, and Improve Infrastructure
 .terraform/
+terraform.tfstate

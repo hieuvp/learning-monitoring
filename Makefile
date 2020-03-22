@@ -37,3 +37,13 @@ clean:
 	@printf "\n"
 	scripts/clean.sh
 	@printf "\n"
+
+.PHONY: terraform-prometheus-apply
+terraform-prometheus-apply:
+	cd terraform-prometheus \
+	&& terraform apply
+
+.PHONY: terraform-prometheus-destroy
+terraform-prometheus-destroy:
+	cd terraform-prometheus \
+	&& terraform destroy
