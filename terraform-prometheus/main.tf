@@ -18,8 +18,6 @@ resource "aws_instance" "this" {
   ami           = local.ami
   key_name      = var.aws_key_name
 
-  associate_public_ip_address = false
-
   tags = {
     Name        = "${upper(local.environment)}-${lower(local.application)}"
     Application = local.application
@@ -27,6 +25,7 @@ resource "aws_instance" "this" {
   }
 }
 
+# Create a DNS record on Cloudflare
 resource "cloudflare_record" "this" {
   zone_id = var.cloudflare_zone_id
 
