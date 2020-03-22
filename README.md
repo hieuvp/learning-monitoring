@@ -20,6 +20,8 @@
 - <https://prometheus.io/>
 - <https://github.com/prometheus/prometheus>
 - <https://grafana.com/>
+- <https://github.com/prometheus/node_exporter>
+- <https://github.com/prometheus/alertmanager>
 
 - Open-source monitoring solution & time series database
 - Was built by Soundcloud
