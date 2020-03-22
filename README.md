@@ -12,14 +12,22 @@
 
 ## Prometheus
 
-> The Prometheus monitoring system and time series database.
-
-- <https://prometheus.io/>
-- <https://grafana.com/>
-- <https://github.com/prometheus/node_exporter>
-- <https://github.com/prometheus/alertmanager>
+> The [Prometheus](https://prometheus.io/) monitoring system and time series database.
 
 - Prometheus is a [Cloud Native Computing Foundation](https://www.cncf.io/) (`CNCF`) graduated project.
+
+- [Grafana](https://grafana.com/)
+  is the open source analytics and monitoring solution for every database.
+
+- [Node Exporter](https://github.com/prometheus/node_exporter)
+  is a Prometheus exporter for hardware and OS metrics exposed by \*NIX kernels,
+  written in Go with pluggable metric collectors.
+
+- The Prometheus [Alertmanager](https://github.com/prometheus/alertmanager)
+  handles alerts sent by client applications such as the Prometheus server.
+  It takes care of deduplicating, grouping, and routing them
+  to the correct receiver integrations such as email, PagerDuty, or OpsGenie.
+  It also takes care of silencing and inhibition of alerts.
 
 1. [ ] [Introduction](prometheus-introduction/README.md)
 1. [ ] [Monitoring](prometheus-monitoring/README.md)
