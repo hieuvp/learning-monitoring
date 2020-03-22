@@ -19,7 +19,7 @@
 
 - [Grafana](https://grafana.com/)
   is a tool that can combine data from many places into a single dashboard.
-  It also allows you to query, visualize and alert on metrics and logs no matter where they are stored.
+  It allows you to query, visualize and alert on metrics and logs no matter where they are stored.
 
 - [Node Exporter](https://github.com/prometheus/node_exporter)
   is a Prometheus exporter for hardware and OS metrics exposed by \*NIX kernels.
@@ -29,6 +29,8 @@
   It takes care of deduplicating, grouping, and routing them
   to the correct receiver integrations such as email, PagerDuty, or OpsGenie.
   It also takes care of silencing and inhibition of alerts.
+
+<br />
 
 1. [ ] [Introduction](prometheus-introduction/README.md)
 1. [ ] [Monitoring](prometheus-monitoring/README.md)
