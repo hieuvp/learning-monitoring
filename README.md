@@ -5,12 +5,12 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Prometheus](#prometheus)
+- [Prometheus and Prometheus Ecosystem](#prometheus-and-prometheus-ecosystem)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Prometheus
+## Prometheus and Prometheus Ecosystem
 
 - [Prometheus](https://prometheus.io/)
   is an open-source systems monitoring and alerting toolkit originally built at SoundCloud.
