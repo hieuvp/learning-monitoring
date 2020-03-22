@@ -8,11 +8,11 @@ locals {
 
   instance_type = "t2.micro"
 
-  # Amazon Linux 2 AMI
+  # Amazon Linux 2
   ami = "ami-0cbc6aae997c6538a"
 }
 
-# Create an EC2 resource on AWS
+# Create an EC2 instance on AWS
 resource "aws_instance" "this" {
   instance_type = local.instance_type
   ami           = local.ami

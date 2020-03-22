@@ -5,5 +5,5 @@ variable "aws_key_name" {
 
 variable "cloudflare_zone_id" {
   type        = string
-  description = ""
+  description = "Zone identifier for the domain you want to use"
 }
