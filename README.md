@@ -22,7 +22,7 @@
   It allows you to query, visualize and alert on metrics and logs no matter where they are stored.
 
 - [Node Exporter](https://github.com/prometheus/node_exporter)
-  is a Prometheus exporter for hardware and OS metrics exposed by \*NIX kernels.
+  is a Prometheus exporter for hardware and OS metrics exposed by `*NIX` kernels.
 
 - [Alertmanager](https://github.com/prometheus/alertmanager)
   handles alerts sent by client applications such as the Prometheus server.
