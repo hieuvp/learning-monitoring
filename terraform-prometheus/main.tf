@@ -16,11 +16,24 @@ locals {
 resource "aws_instance" "this" {
   instance_type = local.instance_type
   ami           = local.ami
-  key_name      = var.key_name
+  key_name      = var.aws_key_name
+
+  associate_public_ip_address = false
 
   tags = {
     Name        = "${upper(local.environment)}-${lower(local.application)}"
     Application = local.application
     Environment = local.environment
   }
+}
+
+resource "cloudflare_record" "this" {
+  zone_id = var.cloudflare_zone_id
+
+  type  = "A"
+  value = aws_instance.this.private_ip
+
+  name    = lower(local.application)
+  ttl     = "1"
+  proxied = "false"
 }
