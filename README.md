@@ -14,9 +14,6 @@
 
 > The Prometheus monitoring system and time series database.
 
-- Introduction to the course
-  Introduction
-
 - <https://prometheus.io/>
 - <https://github.com/prometheus/prometheus>
 - <https://grafana.com/>
