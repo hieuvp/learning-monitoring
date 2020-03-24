@@ -2,23 +2,18 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 
-data "cloudflare_zones" "this" {
-  filter {
-    name   = var.cloudflare_domain
-    status = "active"
-    paused = false
-  }
-}
-
 locals {
   application = "Prometheus"
   environment = "Test"
 
   instance_type = "t2.micro"
-  volume_size   = "20"
+  volume_size   = "20" # In gibibytes (GiB)
 
   ami  = "ami-0cbc6aae997c6538a" # Amazon Linux 2
   user = "ec2-user"
+
+  domain_id   = data.cloudflare_zones.this.zones[0].id
+  domain_name = lower(local.application)
 }
 
 # Create an EC2 instance on AWS
@@ -47,10 +42,10 @@ resource "aws_instance" "this" {
 
 # Create a DNS record on Cloudflare
 resource "cloudflare_record" "this" {
-  zone_id = data.cloudflare_zones.this.zones[0].id
+  zone_id = local.domain_id
 
   type    = "A"
-  name    = lower(local.application)
+  name    = local.domain_name
   value   = aws_instance.this.private_ip
   ttl     = "1"
   proxied = "false"

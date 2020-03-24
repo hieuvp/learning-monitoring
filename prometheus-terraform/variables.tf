@@ -10,5 +10,5 @@ variable "aws_key_path" {
 
 variable "cloudflare_domain" {
   type        = string
-  description = "The domain name you want to use"
+  description = "The main domain you want to use"
 }
