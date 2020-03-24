@@ -2,15 +2,13 @@
 
 set -eou pipefail
 
+cd /home/ec2-user
 yum -y update
 yum -y groupinstall "Development Tools"
 
 ## GitHub Repository
 yum -y install git
-(
-  cd /home/ec2-user
-  git clone https://github.com/hieuvp/learning-monitoring.git
-)
+git clone https://github.com/hieuvp/learning-monitoring.git
 
 ## Bash 5.0
 curl -O http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
@@ -21,3 +19,7 @@ tar xf bash-5.0.tar.gz
   make
   make install
 )
+
+# If the instance does not behave the way you intended,
+# debug the following cloud-init output log file
+# $ tail -1000f /var/log/cloud-init-output.log
