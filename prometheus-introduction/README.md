@@ -33,6 +33,13 @@ ps aux | grep prometheus
 
 ## Demo: Grafana with Prometheus Installation
 
+```shell script
+ps aux | grep grafana
+```
+
+- <http://prometheus.shopback.engineering:3000/login>
+  `admin`/`admin`
+
 ## Basic Concepts
 
 ## Prometheus Configuration
