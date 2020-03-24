@@ -23,7 +23,7 @@ lint:
 	@printf "\n"
 
 	@printf "\n"
-	$(MAKEFILE_SCRIPT_PATH)/fmt-terraform.sh
+	$(MAKEFILE_SCRIPT_PATH)/lint-terraform.sh
 	@printf "\n"
 
 .PHONY: git-add
@@ -44,20 +44,20 @@ clean:
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Prometheus
+# Prometheus Terraform
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.PHONY: terraform-prometheus-plan
-terraform-prometheus-plan:
-	cd terraform-prometheus \
+.PHONY: prometheus-terraform-plan
+prometheus-terraform-plan:
+	cd prometheus-terraform \
 	&& terraform plan
 
-.PHONY: terraform-prometheus-apply
-terraform-prometheus-apply:
-	cd terraform-prometheus \
+.PHONY: prometheus-terraform-apply
+prometheus-terraform-apply:
+	cd prometheus-terraform \
 	&& terraform apply
 
-.PHONY: terraform-prometheus-destroy
-terraform-prometheus-destroy:
-	cd terraform-prometheus \
+.PHONY: prometheus-terraform-destroy
+prometheus-terraform-destroy:
+	cd prometheus-terraform \
 	&& terraform destroy

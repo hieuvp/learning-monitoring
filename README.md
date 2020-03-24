@@ -32,6 +32,7 @@
 
 <br />
 
+1. [Terraform](prometheus-terraform/README.md)
 1. [Introduction](prometheus-introduction/README.md)
 1. [ ] [Monitoring](prometheus-monitoring/README.md)
 1. [ ] [Alerting](prometheus-alerting/README.md)
