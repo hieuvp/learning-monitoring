@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -eou pipefail
+
 echo 'deb https://packages.grafana.com/oss/deb stable main' >> /etc/apt/sources.list
 curl https://packages.grafana.com/gpg.key | sudo apt-key add -
 sudo apt-get update

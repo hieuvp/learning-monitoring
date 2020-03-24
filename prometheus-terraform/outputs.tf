@@ -15,5 +15,5 @@ output "private_ip" {
 
 output "username" {
   value       = local.user
-  description = "Username that is used for connecting to the instance"
+  description = "Username for connecting to the instance"
 }

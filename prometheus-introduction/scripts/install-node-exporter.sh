@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -eou pipefail
+
 NODE_EXPORTER_VERSION="0.16.0"
 wget https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
 tar -xzvf node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
@@ -29,7 +32,6 @@ systemctl daemon-reload
 systemctl start node_exporter
 systemctl enable node_exporter
 
-
 echo "Setup complete.
 Add the following lines to /etc/prometheus/prometheus.yml:
 
@@ -38,4 +40,3 @@ Add the following lines to /etc/prometheus/prometheus.yml:
     static_configs:
       - targets: ['localhost:9100']
 "
-

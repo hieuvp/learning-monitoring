@@ -22,6 +22,8 @@ resource "aws_instance" "this" {
   ami           = local.ami
   key_name      = var.aws_key_name
 
+  user_data_base64 = filebase64("${path.module}/user_data.sh")
+
   root_block_device {
     volume_size = local.volume_size
   }
