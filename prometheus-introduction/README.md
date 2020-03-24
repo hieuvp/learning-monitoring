@@ -25,6 +25,12 @@
 
 ## Demo: Prometheus Installation
 
+```shell script
+ps aux | grep prometheus
+```
+
+- <http://prometheus.shopback.engineering:9090/graph>
+
 ## Demo: Grafana with Prometheus Installation
 
 ## Basic Concepts
