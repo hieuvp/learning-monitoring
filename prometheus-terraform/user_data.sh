@@ -9,6 +9,7 @@ yum -y groupinstall "Development Tools"
 ## GitHub Repository
 yum -y install git
 git clone https://github.com/hieuvp/learning-monitoring.git
+chown -R ec2-user:ec2-user learning-monitoring
 
 ## Bash 5.0
 curl -O http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
@@ -19,6 +20,7 @@ tar xf bash-5.0.tar.gz
   make
   make install
 )
+env bash
 
 # If the instance does not behave the way you intended,
 # debug the following cloud-init output log file

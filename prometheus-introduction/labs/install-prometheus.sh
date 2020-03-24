@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1004
 
 set -eou pipefail
 
-PROMETHEUS_VERSION="2.2.1"
+readonly PROMETHEUS_VERSION="2.2.1"
+
 wget https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
 tar -xzvf prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
 cd prometheus-${PROMETHEUS_VERSION}.linux-amd64/
