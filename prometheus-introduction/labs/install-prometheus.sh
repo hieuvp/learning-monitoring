@@ -4,7 +4,7 @@
 set -eou pipefail
 
 readonly WORKING_DIRECTORY="/tmp/learning-monitoring"
-readonly PROMETHEUS_VERSION="2.2.1"
+readonly PROMETHEUS_VERSION="2.16.0"
 
 rm -rf "$WORKING_DIRECTORY"
 mkdir "$WORKING_DIRECTORY"
@@ -17,7 +17,7 @@ cd prometheus-${PROMETHEUS_VERSION}.linux-amd64/
 #./prometheus --config.file=prometheus.yml
 
 # Create user
-sudo useradd --no-create-home --shell /bin/false prometheus
+# sudo useradd --no-create-home --shell /bin/false prometheus
 
 # Create directories
 sudo mkdir -p /etc/prometheus
