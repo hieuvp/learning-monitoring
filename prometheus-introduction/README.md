@@ -44,11 +44,30 @@ ps aux | grep grafana
 
 ## Prometheus Configuration
 
+```shell script
+# A reload can be done by executing
+kill -SIGHUP <pid>
+```
+
 ## Demo: Prometheus Config file
 
 ## Monitoring Nodes (Servers) with Prometheus
 
 ## Demo: node exporter for Linux
+
+```shell script
+vi /etc/prometheus/prometheus.yml
+
+curl localhost:9100
+curl localhost:9100/metrics
+
+ps aux | grep prometheus
+systemctl reload prometheus
+kill -SIGHUP <pid>
+journalctl -n100
+```
+
+- <http://prometheus.shopback.engineering:9090/targets>
 
 ## Node Exporter for Windows (WMI Exporter)
 
