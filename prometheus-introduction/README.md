@@ -72,3 +72,5 @@ journalctl -n100
 ## Node Exporter for Windows (WMI Exporter)
 
 ## Prometheus Architecture
+
+<div align="center"><img src="assets/architecture.png" width="900"></div>
