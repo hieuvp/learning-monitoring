@@ -38,10 +38,6 @@ clean:
 	$(MAKEFILE_SCRIPT_PATH)/clean-terraform.sh
 	@printf "\n"
 
-	@printf "\n"
-	scripts/clean.sh
-	@printf "\n"
-
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Prometheus Terraform
@@ -61,3 +57,9 @@ prometheus-terraform-apply:
 prometheus-terraform-destroy:
 	cd prometheus-terraform \
 	&& terraform destroy
+
+.PHONY: prometheus-terraform-reset
+prometheus-terraform-reset:
+	cd prometheus-terraform \
+	&& terraform destroy -auto-approve \
+	&& terraform apply -auto-approve
