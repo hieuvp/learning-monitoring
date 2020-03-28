@@ -1,30 +1,39 @@
-#!/bin/bash
-PROMETHEUS_VERSION="2.2.1"
+#!/usr/bin/env bash
+# shellcheck disable=SC1004
+
+set -eou pipefail
+
+readonly WORKING_DIRECTORY="/tmp/learning-monitoring"
+readonly PROMETHEUS_VERSION="2.16.0"
+
+set -x
+
+rm -rf "$WORKING_DIRECTORY"
+mkdir "$WORKING_DIRECTORY"
+cd "$WORKING_DIRECTORY"
+
 wget https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
 tar -xzvf prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
 cd prometheus-${PROMETHEUS_VERSION}.linux-amd64/
 # if you just want to start prometheus as root
 #./prometheus --config.file=prometheus.yml
 
-# create user
-useradd --no-create-home --shell /bin/false prometheus 
-
-# create directories
+# Create directories
 mkdir -p /etc/prometheus
 mkdir -p /var/lib/prometheus
 
-# set ownership
+# Set ownership
 chown prometheus:prometheus /etc/prometheus
 chown prometheus:prometheus /var/lib/prometheus
 
-# copy binaries
+# Copy binaries
 cp prometheus /usr/local/bin/
 cp promtool /usr/local/bin/
 
 chown prometheus:prometheus /usr/local/bin/prometheus
 chown prometheus:prometheus /usr/local/bin/promtool
 
-# copy config
+# Copy config
 cp -r consoles /etc/prometheus
 cp -r console_libraries /etc/prometheus
 cp prometheus.yml /etc/prometheus/prometheus.yml
@@ -32,7 +41,7 @@ cp prometheus.yml /etc/prometheus/prometheus.yml
 chown -R prometheus:prometheus /etc/prometheus/consoles
 chown -R prometheus:prometheus /etc/prometheus/console_libraries
 
-# setup systemd
+# Setup systemd
 echo '[Unit]
 Description=Prometheus
 Wants=network-online.target
