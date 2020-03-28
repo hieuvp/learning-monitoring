@@ -17,15 +17,15 @@ locals {
 
 # Create an EC2 instance on AWS
 resource "aws_instance" "this" {
-  ami              = local.ami
-  key_name         = var.ssh_key_name
-  user_data_base64 = filebase64("${path.root}/user_data.sh")
-
+  ami           = local.ami
   instance_type = local.instance_type
 
   root_block_device {
     volume_size = local.volume_size
   }
+
+  key_name         = var.ssh_key_name
+  user_data_base64 = filebase64("${path.root}/user_data.sh")
 
   tags = {
     Name        = "${upper(local.environment)}-${lower(local.application)}"
