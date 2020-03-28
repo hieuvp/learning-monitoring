@@ -2,14 +2,20 @@
 
 set -eou pipefail
 
-cd /home/ec2-user
-yum -y update
-yum -y groupinstall "Development Tools"
+readonly USERNAME=ec2-user
 
-## GitHub Repository
-yum -y install git
-git clone https://github.com/hieuvp/learning-monitoring.git
-chown -R ec2-user:ec2-user learning-monitoring
+set -x
+
+## Working in the user home directory
+cd "/home/${USERNAME}"
+pwd
+
+## Core Development Tools
+yum -y update
+yum -y group install "Development Tools"
+
+## htop - Interactive Process Viewer
+yum -y install htop
 
 ## Bash 5.0
 curl -O http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
@@ -20,7 +26,15 @@ tar xf bash-5.0.tar.gz
   make
   make install
 )
-env bash
+
+## Set Locale
+echo "LANG=en_US.utf-8" >> /etc/environment
+echo "LC_ALL=en_US.utf-8" >> /etc/environment
+
+## GitHub Repository
+yum -y install git
+git clone https://github.com/hieuvp/learning-monitoring.git
+chown -R ${USERNAME}:${USERNAME} learning-monitoring
 
 # If the instance does not behave the way you intended,
 # debug the following cloud-init output log file
