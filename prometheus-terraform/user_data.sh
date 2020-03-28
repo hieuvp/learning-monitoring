@@ -2,11 +2,11 @@
 
 set -eou pipefail
 
-readonly USERNAME=ec2-user
+readonly USERNAME="ec2-user"
 
 set -x
 
-## Working in the user home directory
+## Working under the user home directory
 cd "/home/${USERNAME}"
 pwd
 

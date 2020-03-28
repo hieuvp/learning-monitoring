@@ -12,8 +12,3 @@ output "private_ip" {
   value       = aws_instance.this.private_ip
   description = "Private IP of the instance"
 }
-
-output "username" {
-  value       = local.user
-  description = "Username for connecting to the instance"
-}

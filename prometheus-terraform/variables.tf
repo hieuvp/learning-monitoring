@@ -1,14 +1,9 @@
-variable "aws_key_name" {
+variable "ssh_key_name" {
   type        = string
   description = "The key name to use for the ec2 instance"
 }
 
-variable "aws_key_path" {
+variable "domain_name" {
   type        = string
-  description = "The key path to use for the ec2 instance"
-}
-
-variable "cloudflare_domain" {
-  type        = string
-  description = "The main domain you want to use"
+  description = "The domain name to use for the ec2 instance"
 }

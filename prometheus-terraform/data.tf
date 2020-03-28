@@ -1,6 +1,6 @@
 data "cloudflare_zones" "this" {
   filter {
-    name   = var.cloudflare_domain
+    name   = var.domain_name
     status = "active"
     paused = false
   }
