@@ -23,6 +23,13 @@
 
 ## Prometheus Installation
 
+```shell script
+make prometheus-terraform-plan
+make prometheus-terraform-apply
+make prometheus-terraform-destroy
+make prometheus-terraform-reset
+```
+
 ## Demo: Prometheus Installation
 
 ```shell script
