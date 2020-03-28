@@ -10,8 +10,9 @@ locals {
   instance_type = "t2.micro"
   volume_size   = "20" # In gibibytes (GiB)
 
-  domain_id = data.cloudflare_zones.this.zones[0].id
-  subdomain = lower(local.application)
+  domain_name = "shopback.engineering"
+  domain_id   = data.cloudflare_zones.this.zones[0].id
+  subdomain   = lower(local.application)
 }
 
 # Create an EC2 instance on AWS
