@@ -25,7 +25,7 @@ resource "aws_instance" "this" {
   }
 
   key_name         = var.ssh_key_name
-  user_data_base64 = filebase64("${path.root}/user_data.sh")
+  user_data_base64 = filebase64("${path.root}/user-data.sh")
 
   tags = {
     Name        = "${upper(local.environment)}-${lower(local.application)}"
