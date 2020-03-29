@@ -277,17 +277,82 @@ kill -SIGHUP <pid>
 
 set -eou pipefail
 
-readonly NODE_EXPORTER_VERSION="1.0.0-rc.0"
+readonly WORKING_DIR="/tmp/monitoring-tools"
 
-wget https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
-tar -xzvf node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
-cd node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Prepare the package
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+readonly PACKAGE_REPO="prometheus/node_exporter"
+readonly PACKAGE_TARGET="\.linux-amd64\.tar\.gz"
+readonly PACKAGE_FILENAME_PATTERN="^.+\"name\": \"(.+${PACKAGE_TARGET})\".*$"
+readonly PACKAGE_URL_PATTERN="^.+\"browser_download_url\": \"(.+${PACKAGE_TARGET})\".*$"
+
+readonly PACKAGE_LATEST_RELEASE=$(
+  curl --silent "https://api.github.com/repos/${PACKAGE_REPO}/releases/latest"
+)
+
+readonly PACKAGE_URL=$(
+  echo "$PACKAGE_LATEST_RELEASE" \
+    | grep -E "$PACKAGE_URL_PATTERN" \
+    | sed -E "s/${PACKAGE_URL_PATTERN}/\1/g"
+)
+
+readonly PACKAGE_FILENAME=$(
+  echo "$PACKAGE_LATEST_RELEASE" \
+    | grep -E "$PACKAGE_FILENAME_PATTERN" \
+    | sed -E "s/${PACKAGE_FILENAME_PATTERN}/\1/g"
+)
+
+readonly PACKAGE_DIRNAME="${PACKAGE_FILENAME%.tar.gz}"
+
+printf "\n"
+echo "+ Package : ${PACKAGE_FILENAME}"
+echo "+ URL     : ${PACKAGE_URL}"
+printf "\n"
+
+set -x
+
+## Make a clean working directory
+rm -rf "$WORKING_DIR"
+mkdir -p "$WORKING_DIR"
+cd "$WORKING_DIR"
+
+## Download the package
+wget "$PACKAGE_URL"
+
+## Extract it afterwards
+tar -xzvf "$PACKAGE_FILENAME"
+
+tree -a
+cd "$PACKAGE_DIRNAME"
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Stop the service if is running
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if systemctl stop node_exporter.service; then
+  systemctl status node_exporter.service || true
+fi
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Create a user if not exists
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if ! id -u node_exporter; then
+  useradd --no-create-home --shell /bin/false node_exporter
+fi
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copy binaries
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 cp node_exporter /usr/local/bin
-
-# Create user
-useradd --no-create-home --shell /bin/false node_exporter
-
 chown node_exporter:node_exporter /usr/local/bin/node_exporter
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Setup systemd
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 echo '[Unit]
 Description=Node Exporter
@@ -303,10 +368,13 @@ ExecStart=/usr/local/bin/node_exporter
 [Install]
 WantedBy=multi-user.target' > /etc/systemd/system/node_exporter.service
 
-# Enable node_exporter in systemctl
 systemctl daemon-reload
 systemctl enable node_exporter.service
 systemctl start node_exporter.service
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Final Step
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 echo "Setup complete.
 Add the following lines to /etc/prometheus/prometheus.yml:
