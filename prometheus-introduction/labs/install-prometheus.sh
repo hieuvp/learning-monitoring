@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1004
 
-set -eoux pipefail
+set -eou pipefail
 
 readonly WORKING_DIR="/tmp/learning-monitoring"
 readonly GITHUB_REPO="prometheus/prometheus"
@@ -9,6 +9,8 @@ readonly GITHUB_REPO="prometheus/prometheus"
 readonly TARGET_PATTERN="\.linux-amd64\.tar\.gz"
 readonly NAME_PATTERN="^.+\"name\": \"(.+${TARGET_PATTERN})\".*$"
 readonly DOWNLOAD_URL_PATTERN="^.+\"browser_download_url\": \"(.+${TARGET_PATTERN})\".*$"
+
+set -x
 
 readonly PACKAGE_NAME=$(
   curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
@@ -33,8 +35,11 @@ cd "${PACKAGE_NAME%.tar.gz}"
 # if you just want to start prometheus as root
 #./prometheus --config.file=prometheus.yml
 
-# Create user
-useradd --no-create-home --shell /bin/false prometheus
+# Create a user if not exists
+readonly USERNAME="prometheus"
+if ! id -u "$USERNAME"; then
+  useradd --no-create-home --shell /bin/false "$USERNAME"
+fi
 
 # Create directories
 mkdir -p /etc/prometheus
