@@ -17,6 +17,9 @@ yum -y group install "Development Tools"
 ## htop - Interactive Process Viewer
 yum -y install htop
 
+## tree - List Contents of Directories in a Tree-like Format
+yum -y install tree
+
 ## Bash 5.0
 curl -O http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
 tar xf bash-5.0.tar.gz

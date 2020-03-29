@@ -74,12 +74,10 @@ make prometheus-terraform-reset
 
 set -eou pipefail
 
-readonly SYSTEMD_UNIT_NAME="prometheus.service"
-
-readonly WORKING_DIR="/tmp/learning-monitoring"
+readonly WORKING_DIR="/tmp/monitoring-tools"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Download and Extract The Package
+# Prepare the package
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 readonly PACKAGE_REPO="prometheus/prometheus"
@@ -112,32 +110,38 @@ printf "\n"
 
 set -x
 
-## Make the working directory
+## Make a clean working directory
 rm -rf "$WORKING_DIR"
 mkdir -p "$WORKING_DIR"
 cd "$WORKING_DIR"
 
+## Download the package
 wget "$PACKAGE_URL"
+
+## Extract it afterwards
 tar -xzvf "$PACKAGE_FILENAME"
+
+tree -a
 cd "$PACKAGE_DIRNAME"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 # Stop the service if is running
-if systemctl stop "$SYSTEMD_UNIT_NAME"; then
-  systemctl status "$SYSTEMD_UNIT_NAME" || true
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if systemctl stop prometheus.service; then
+  systemctl status prometheus.service || true
 fi
 
-# If you just want to start prometheus as root
-#./prometheus --config.file=prometheus.yml
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Create a user if not exists
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Create user if not exists
 if ! id -u prometheus; then
   useradd --no-create-home --shell /bin/false prometheus
 fi
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Create Directories and Set Ownership
+# Create Prometheus directories
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 rm -rf /etc/prometheus
@@ -149,7 +153,7 @@ mkdir -p /var/lib/prometheus
 chown prometheus:prometheus /var/lib/prometheus
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Copy Binaries
+# Copy Prometheus binaries
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 cp prometheus /usr/local/bin/
@@ -159,7 +163,7 @@ cp promtool /usr/local/bin/
 chown prometheus:prometheus /usr/local/bin/promtool
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Copy Config
+# Copy Prometheus files
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 cp -r consoles /etc/prometheus
@@ -188,11 +192,11 @@ ExecStart=/usr/local/bin/prometheus \
     --web.console.libraries=/etc/prometheus/console_libraries
 
 [Install]
-WantedBy=multi-user.target' > "/etc/systemd/system/${SYSTEMD_UNIT_NAME}"
+WantedBy=multi-user.target' > /etc/systemd/system/prometheus.service
 
 systemctl daemon-reload
-systemctl enable "$SYSTEMD_UNIT_NAME"
-systemctl start "$SYSTEMD_UNIT_NAME"
+systemctl enable prometheus.service
+systemctl start prometheus.service
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
