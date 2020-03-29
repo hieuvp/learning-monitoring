@@ -89,21 +89,24 @@ set -x
 # Download The Package
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+readonly PACKAGE_LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest")
+
 readonly PACKAGE_NAME=$(
-  curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
+  echo "$PACKAGE_LATEST_RELEASE" \
     | grep -E "$PACKAGE_NAME_PATTERN" \
     | sed -E "s/${PACKAGE_NAME_PATTERN}/\1/g"
 )
 
 readonly PACKAGE_URL=$(
-  curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
+  echo "$PACKAGE_LATEST_RELEASE" \
     | grep -E "$PACKAGE_URL_PATTERN" \
     | sed -E "s/${PACKAGE_URL_PATTERN}/\1/g"
 )
 
-# Stop the service
-systemctl stop "$SYSTEMD_UNIT_NAME"
-systemctl status "$SYSTEMD_UNIT_NAME" || true
+# Stop the service if is running
+if systemctl stop "$SYSTEMD_UNIT_NAME"; then
+  systemctl status "$SYSTEMD_UNIT_NAME" || true
+fi
 
 rm -rf "$WORKING_DIR"
 mkdir "$WORKING_DIR"
@@ -183,7 +186,7 @@ systemctl start "$SYSTEMD_UNIT_NAME"
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ```shell script
-cd /home/ec2-user/learning-monitoring/prometheus-introduction/labs
+cd ~/learning-monitoring/prometheus-introduction/labs
 sudo ./install-prometheus.sh
 ```
 
