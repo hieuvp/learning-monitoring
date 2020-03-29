@@ -99,7 +99,7 @@ readonly PACKAGE_URL=$(
 
 # Stop the service
 systemctl stop "$SYSTEMD_UNIT_NAME"
-systemctl status "$SYSTEMD_UNIT_NAME"
+systemctl status "$SYSTEMD_UNIT_NAME" || true
 
 rm -rf "$WORKING_DIR"
 mkdir "$WORKING_DIR"
