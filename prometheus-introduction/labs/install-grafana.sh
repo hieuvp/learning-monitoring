@@ -18,6 +18,8 @@ set -x
 yum -y update
 yum -y install grafana
 
+find /usr/lib/systemd/system -name '*grafana*'
+
 systemctl daemon-reload
-systemctl enable grafana.service
-systemctl start grafana.service
+systemctl enable grafana-server.service
+systemctl start grafana-server.service
