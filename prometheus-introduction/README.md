@@ -74,6 +74,8 @@ make prometheus-terraform-reset
 
 set -eou pipefail
 
+readonly SYSTEMD_UNIT_NAME="prometheus.service"
+
 readonly WORKING_DIR="/tmp/learning-monitoring"
 readonly GITHUB_REPO="prometheus/prometheus"
 
@@ -94,6 +96,10 @@ readonly PACKAGE_URL=$(
     | grep -E "$PACKAGE_URL_PATTERN" \
     | sed -E "s/${PACKAGE_URL_PATTERN}/\1/g"
 )
+
+# Stop the service
+systemctl stop "$SYSTEMD_UNIT_NAME"
+systemctl status "$SYSTEMD_UNIT_NAME"
 
 rm -rf "$WORKING_DIR"
 mkdir "$WORKING_DIR"
@@ -123,17 +129,16 @@ chown "${USERNAME}:${USERNAME}" /var/lib/prometheus
 # Copy binaries
 cp prometheus /usr/local/bin/
 cp promtool /usr/local/bin/
-
-chown prometheus:prometheus /usr/local/bin/prometheus
-chown prometheus:prometheus /usr/local/bin/promtool
+chown "${USERNAME}:${USERNAME}" /usr/local/bin/prometheus
+chown "${USERNAME}:${USERNAME}" /usr/local/bin/promtool
 
 # Copy config
 cp -r consoles /etc/prometheus
 cp -r console_libraries /etc/prometheus
 cp prometheus.yml /etc/prometheus/prometheus.yml
 
-chown -R prometheus:prometheus /etc/prometheus/consoles
-chown -R prometheus:prometheus /etc/prometheus/console_libraries
+chown -R "${USERNAME}:${USERNAME}" /etc/prometheus/consoles
+chown -R "${USERNAME}:${USERNAME}" /etc/prometheus/console_libraries
 
 # Setup systemd
 echo '[Unit]
@@ -152,11 +157,11 @@ ExecStart=/usr/local/bin/prometheus \
     --web.console.libraries=/etc/prometheus/console_libraries
 
 [Install]
-WantedBy=multi-user.target' > /etc/systemd/system/prometheus.service
+WantedBy=multi-user.target' > "/etc/systemd/system/${SYSTEMD_UNIT_NAME}"
 
 systemctl daemon-reload
-systemctl enable prometheus
-systemctl start prometheus
+systemctl enable "$SYSTEMD_UNIT_NAME"
+systemctl start "$SYSTEMD_UNIT_NAME"
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
