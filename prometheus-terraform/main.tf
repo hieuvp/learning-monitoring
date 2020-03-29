@@ -7,6 +7,7 @@ locals {
   environment = "Test"
 
   ami           = "ami-0cbc6aae997c6538a" # Amazon Linux 2
+  username      = "ec2-user"
   instance_type = "t2.micro"
   volume_size   = "20" # In gibibytes (GiB)
 
@@ -26,6 +27,24 @@ resource "aws_instance" "this" {
 
   key_name         = var.ssh_key_name
   user_data_base64 = filebase64("${path.root}/user-data.sh")
+
+  provisioner "file" {
+    source      = "~/.ssh/id_rsa"
+    destination = "/home/${local.username}/.ssh/id_rsa"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod 400 /home/${local.username}/.ssh/id_rsa",
+    ]
+  }
+
+  connection {
+    type        = "ssh"
+    host        = self.private_ip
+    user        = local.username
+    private_key = file(var.ssh_key_path)
+  }
 
   tags = {
     Name        = "${upper(local.environment)}-${lower(local.application)}"

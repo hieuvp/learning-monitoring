@@ -380,7 +380,9 @@ systemctl start node_exporter.service
 # Final instruction
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-echo "Setup complete.
+set +x
+
+echo "Setup is complete.
 Add the following lines to /etc/prometheus/prometheus.yml:
 
   - job_name: 'node_exporter'

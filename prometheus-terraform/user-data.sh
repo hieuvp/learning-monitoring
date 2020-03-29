@@ -20,6 +20,9 @@ yum -y install htop
 ## tree - List Contents of Directories in a Tree-like Format
 yum -y install tree
 
+## jq - Lightweight and Flexible Command-line JSON Processor
+yum -y install jq
+
 ## Bash 5.0
 curl -O http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
 tar xf bash-5.0.tar.gz
@@ -34,12 +37,10 @@ tar xf bash-5.0.tar.gz
 echo "LANG=en_US.utf-8" >> /etc/environment
 echo "LC_ALL=en_US.utf-8" >> /etc/environment
 
-## jq - Lightweight and Flexible Command-line JSON Processor
-yum -y install jq
-
 ## GitHub Repository
 yum -y install git
-git clone https://github.com/hieuvp/learning-monitoring.git
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+git clone git@github.com:hieuvp/learning-monitoring.git
 chown -R ${USERNAME}:${USERNAME} learning-monitoring
 
 # If the instance does not behave the way you intended,
