@@ -78,23 +78,17 @@ readonly SYSTEMD_UNIT_NAME="prometheus.service"
 
 readonly WORKING_DIR="/tmp/learning-monitoring"
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Download and Extract The Package
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 readonly PACKAGE_REPO="prometheus/prometheus"
 readonly PACKAGE_TARGET="\.linux-amd64\.tar\.gz"
-readonly PACKAGE_NAME_PATTERN="^.+\"name\": \"(.+${PACKAGE_TARGET})\".*$"
+readonly PACKAGE_FILENAME_PATTERN="^.+\"name\": \"(.+${PACKAGE_TARGET})\".*$"
 readonly PACKAGE_URL_PATTERN="^.+\"browser_download_url\": \"(.+${PACKAGE_TARGET})\".*$"
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Download The Package
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 readonly PACKAGE_LATEST_RELEASE=$(
   curl --silent "https://api.github.com/repos/${PACKAGE_REPO}/releases/latest"
-)
-
-readonly PACKAGE_NAME=$(
-  echo "$PACKAGE_LATEST_RELEASE" \
-    | grep -E "$PACKAGE_NAME_PATTERN" \
-    | sed -E "s/${PACKAGE_NAME_PATTERN}/\1/g"
 )
 
 readonly PACKAGE_URL=$(
@@ -103,18 +97,29 @@ readonly PACKAGE_URL=$(
     | sed -E "s/${PACKAGE_URL_PATTERN}/\1/g"
 )
 
-echo "Package Name : ${PACKAGE_NAME}"
-echo "Download URL : ${PACKAGE_URL}"
+readonly PACKAGE_FILENAME=$(
+  echo "$PACKAGE_LATEST_RELEASE" \
+    | grep -E "$PACKAGE_FILENAME_PATTERN" \
+    | sed -E "s/${PACKAGE_FILENAME_PATTERN}/\1/g"
+)
+
+readonly PACKAGE_DIRNAME="${PACKAGE_FILENAME%.tar.gz}"
+
+printf "\n"
+echo "+ Package : ${PACKAGE_FILENAME}"
+echo "+ URL     : ${PACKAGE_URL}"
+printf "\n"
 
 set -x
 
+## Make the working directory
 rm -rf "$WORKING_DIR"
-mkdir "$WORKING_DIR"
+mkdir -p "$WORKING_DIR"
 cd "$WORKING_DIR"
 
 wget "$PACKAGE_URL"
-tar -xzvf "$PACKAGE_NAME"
-cd "${PACKAGE_NAME%.tar.gz}"
+tar -xzvf "$PACKAGE_FILENAME"
+cd "$PACKAGE_DIRNAME"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
