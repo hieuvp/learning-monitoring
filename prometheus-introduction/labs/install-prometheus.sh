@@ -50,6 +50,7 @@ wget "$PACKAGE_URL"
 ## Extract it afterwards
 tar -xzvf "$PACKAGE_FILENAME"
 
+pwd
 tree -a
 cd "$PACKAGE_DIRNAME"
 
