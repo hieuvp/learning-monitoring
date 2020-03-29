@@ -21,6 +21,29 @@
 
 ## Introduction to Prometheus
 
+- Prometheus is an Open source monitoring solution.
+- Started at SoundCloud around 2012-2013,
+  and was made public in early 2015.
+- Prometheus provides Metrics & Alerting.
+- It is inspired by Google's Borgmon,
+  which uses time-series data as a datasource,
+  to then send alerts based on this data.
+- It fits very well in the cloud native infrastructure.
+- Prometheus is also a member of the CNCF (Cloud Native Foundation).
+
+- In Prometheus we talk about Dimensional Data: time series are identified
+  by metric name and a se of key/value pairs.
+- Prometheus includes a Flexible Query Language.
+- Visualizations can be shown using a built-in expression browser
+  or with integrations like Grafana.
+- It stores metrics in memory and local disk in an own custom, efficient format
+- It is written in Go.
+- Many client libraries and integrations available.
+
+- Prometheus collects metrics from monitored targets by scraping metrics HTTP endpoints.
+
+<div align="center"><img src="assets/scraping-metrics.png" width="600"></div>
+
 ## Prometheus Installation
 
 ```shell script
