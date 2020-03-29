@@ -14,6 +14,10 @@ readonly PACKAGE_URL_PATTERN="^.+\"browser_download_url\": \"(.+${PACKAGE_TARGET
 
 set -x
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Download The Package
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 readonly PACKAGE_NAME=$(
   curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
     | grep -E "$PACKAGE_NAME_PATTERN" \
@@ -38,38 +42,50 @@ wget "$PACKAGE_URL"
 tar -xzvf "$PACKAGE_NAME"
 cd "${PACKAGE_NAME%.tar.gz}"
 
-# if you just want to start prometheus as root
+# If you just want to start prometheus as root
 #./prometheus --config.file=prometheus.yml
 
-# Create a user if not exists
-readonly USERNAME="prometheus"
-if ! id -u "$USERNAME"; then
-  useradd --no-create-home --shell /bin/false "$USERNAME"
+# Create user if not exists
+if ! id -u prometheus; then
+  useradd --no-create-home --shell /bin/false prometheus
 fi
 
-# Create directories
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Create Directories and Set Ownership
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+rm -rf /etc/prometheus
 mkdir -p /etc/prometheus
+chown prometheus:prometheus /etc/prometheus
+
+rm -rf /var/lib/prometheus
 mkdir -p /var/lib/prometheus
+chown prometheus:prometheus /var/lib/prometheus
 
-# Set ownership
-chown "${USERNAME}:${USERNAME}" /etc/prometheus
-chown "${USERNAME}:${USERNAME}" /var/lib/prometheus
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copy Binaries
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Copy binaries
 cp prometheus /usr/local/bin/
-cp promtool /usr/local/bin/
-chown "${USERNAME}:${USERNAME}" /usr/local/bin/prometheus
-chown "${USERNAME}:${USERNAME}" /usr/local/bin/promtool
+chown prometheus:prometheus /usr/local/bin/prometheus
 
-# Copy config
+cp promtool /usr/local/bin/
+chown prometheus:prometheus /usr/local/bin/promtool
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copy Config
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 cp -r consoles /etc/prometheus
 cp -r console_libraries /etc/prometheus
 cp prometheus.yml /etc/prometheus/prometheus.yml
 
-chown -R "${USERNAME}:${USERNAME}" /etc/prometheus/consoles
-chown -R "${USERNAME}:${USERNAME}" /etc/prometheus/console_libraries
+chown -R prometheus:prometheus /etc/prometheus
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Setup systemd
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 echo '[Unit]
 Description=Prometheus
 Wants=network-online.target
@@ -81,7 +97,7 @@ Group=prometheus
 Type=simple
 ExecStart=/usr/local/bin/prometheus \
     --config.file /etc/prometheus/prometheus.yml \
-    --storage.tsdb.path /var/lib/prometheus/ \
+    --storage.tsdb.path /var/lib/prometheus \
     --web.console.templates=/etc/prometheus/consoles \
     --web.console.libraries=/etc/prometheus/console_libraries
 
