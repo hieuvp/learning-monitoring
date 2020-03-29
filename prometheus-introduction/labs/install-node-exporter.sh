@@ -9,7 +9,7 @@ tar -xzvf node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
 cd node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64
 cp node_exporter /usr/local/bin
 
-# create user
+# Create user
 useradd --no-create-home --shell /bin/false node_exporter
 
 chown node_exporter:node_exporter /usr/local/bin/node_exporter
@@ -30,8 +30,8 @@ WantedBy=multi-user.target' > /etc/systemd/system/node_exporter.service
 
 # Enable node_exporter in systemctl
 systemctl daemon-reload
-systemctl start node_exporter
-systemctl enable node_exporter
+systemctl enable node_exporter.service
+systemctl start node_exporter.service
 
 echo "Setup complete.
 Add the following lines to /etc/prometheus/prometheus.yml:

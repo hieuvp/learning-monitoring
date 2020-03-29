@@ -77,19 +77,19 @@ set -eou pipefail
 readonly SYSTEMD_UNIT_NAME="prometheus.service"
 
 readonly WORKING_DIR="/tmp/learning-monitoring"
-readonly GITHUB_REPO="prometheus/prometheus"
 
+readonly PACKAGE_REPO="prometheus/prometheus"
 readonly PACKAGE_TARGET="\.linux-amd64\.tar\.gz"
 readonly PACKAGE_NAME_PATTERN="^.+\"name\": \"(.+${PACKAGE_TARGET})\".*$"
 readonly PACKAGE_URL_PATTERN="^.+\"browser_download_url\": \"(.+${PACKAGE_TARGET})\".*$"
-
-set -x
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Download The Package
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-readonly PACKAGE_LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest")
+readonly PACKAGE_LATEST_RELEASE=$(
+  curl --silent "https://api.github.com/repos/${PACKAGE_REPO}/releases/latest"
+)
 
 readonly PACKAGE_NAME=$(
   echo "$PACKAGE_LATEST_RELEASE" \
@@ -103,10 +103,10 @@ readonly PACKAGE_URL=$(
     | sed -E "s/${PACKAGE_URL_PATTERN}/\1/g"
 )
 
-# Stop the service if is running
-if systemctl stop "$SYSTEMD_UNIT_NAME"; then
-  systemctl status "$SYSTEMD_UNIT_NAME" || true
-fi
+echo "Package Name : ${PACKAGE_NAME}"
+echo "Download URL : ${PACKAGE_URL}"
+
+set -x
 
 rm -rf "$WORKING_DIR"
 mkdir "$WORKING_DIR"
@@ -115,6 +115,13 @@ cd "$WORKING_DIR"
 wget "$PACKAGE_URL"
 tar -xzvf "$PACKAGE_NAME"
 cd "${PACKAGE_NAME%.tar.gz}"
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Stop the service if is running
+if systemctl stop "$SYSTEMD_UNIT_NAME"; then
+  systemctl status "$SYSTEMD_UNIT_NAME" || true
+fi
 
 # If you just want to start prometheus as root
 #./prometheus --config.file=prometheus.yml
@@ -225,8 +232,8 @@ yum -y update
 yum -y install grafana
 
 systemctl daemon-reload
-systemctl start grafana-server
-systemctl enable grafana-server.service
+systemctl enable grafana.service
+systemctl start grafana.service
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
@@ -268,7 +275,7 @@ tar -xzvf node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
 cd node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64
 cp node_exporter /usr/local/bin
 
-# create user
+# Create user
 useradd --no-create-home --shell /bin/false node_exporter
 
 chown node_exporter:node_exporter /usr/local/bin/node_exporter
@@ -289,8 +296,8 @@ WantedBy=multi-user.target' > /etc/systemd/system/node_exporter.service
 
 # Enable node_exporter in systemctl
 systemctl daemon-reload
-systemctl start node_exporter
-systemctl enable node_exporter
+systemctl enable node_exporter.service
+systemctl start node_exporter.service
 
 echo "Setup complete.
 Add the following lines to /etc/prometheus/prometheus.yml:
