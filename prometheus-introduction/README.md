@@ -45,6 +45,15 @@
 
 <div align="center"><img src="assets/scraping-metrics.png" width="600"></div>
 
+- This is fundamentally different than other monitoring and alerting systems,
+  (except this is also how Google's Borgmon works).
+- Rather than using custom scripts that check on particular services and systems,
+  the monitoring data itself is used.
+- Scraping endpoints is much more effiecient than other mechanisms,
+  like 3rd party agents.
+- A single prometheus server is able to ingest up to one million samples
+  per second as several million time series.
+
 ## Prometheus Installation
 
 ```shell script
@@ -56,6 +65,79 @@ make prometheus-terraform-reset
 
 ## Demo: Prometheus Installation
 
+<!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-prometheus.sh) -->
+<!-- The below code snippet is automatically added from labs/install-prometheus.sh -->
+
+```sh
+#!/usr/bin/env bash
+# shellcheck disable=SC1004
+
+set -eou pipefail
+
+readonly WORKING_DIRECTORY="/tmp/learning-monitoring"
+readonly PROMETHEUS_VERSION="2.16.0"
+
+set -x
+
+rm -rf "$WORKING_DIRECTORY"
+mkdir "$WORKING_DIRECTORY"
+cd "$WORKING_DIRECTORY"
+
+wget https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
+tar -xzvf prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
+cd prometheus-${PROMETHEUS_VERSION}.linux-amd64/
+# if you just want to start prometheus as root
+#./prometheus --config.file=prometheus.yml
+
+# Create directories
+mkdir -p /etc/prometheus
+mkdir -p /var/lib/prometheus
+
+# Set ownership
+chown prometheus:prometheus /etc/prometheus
+chown prometheus:prometheus /var/lib/prometheus
+
+# Copy binaries
+cp prometheus /usr/local/bin/
+cp promtool /usr/local/bin/
+
+chown prometheus:prometheus /usr/local/bin/prometheus
+chown prometheus:prometheus /usr/local/bin/promtool
+
+# Copy config
+cp -r consoles /etc/prometheus
+cp -r console_libraries /etc/prometheus
+cp prometheus.yml /etc/prometheus/prometheus.yml
+
+chown -R prometheus:prometheus /etc/prometheus/consoles
+chown -R prometheus:prometheus /etc/prometheus/console_libraries
+
+# Setup systemd
+echo '[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/usr/local/bin/prometheus \
+    --config.file /etc/prometheus/prometheus.yml \
+    --storage.tsdb.path /var/lib/prometheus/ \
+    --web.console.templates=/etc/prometheus/consoles \
+    --web.console.libraries=/etc/prometheus/console_libraries
+
+[Install]
+WantedBy=multi-user.target' > /etc/systemd/system/prometheus.service
+
+systemctl daemon-reload
+systemctl enable prometheus
+systemctl start prometheus
+```
+
+<!-- AUTO-GENERATED-CONTENT:END -->
+
 ```shell script
 ps aux | grep prometheus
 ```
@@ -63,6 +145,37 @@ ps aux | grep prometheus
 - <http://prometheus.shopback.engineering:9090/graph>
 
 ## Demo: Grafana with Prometheus Installation
+
+<!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-grafana.sh) -->
+<!-- The below code snippet is automatically added from labs/install-grafana.sh -->
+
+```sh
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+# Add Grafana RPM repository to YUM
+echo '[grafana]
+name=grafana
+baseurl=https://packages.grafana.com/oss/rpm
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt' > /etc/yum.repos.d/grafana.repo
+
+set -x
+
+yum -y update
+yum -y install grafana
+
+systemctl daemon-reload
+systemctl start grafana-server
+systemctl enable grafana-server.service
+```
+
+<!-- AUTO-GENERATED-CONTENT:END -->
 
 ```shell script
 ps aux | grep grafana
@@ -85,6 +198,57 @@ kill -SIGHUP <pid>
 ## Monitoring Nodes (Servers) with Prometheus
 
 ## Demo: node exporter for Linux
+
+<!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-node-exporter.sh) -->
+<!-- The below code snippet is automatically added from labs/install-node-exporter.sh -->
+
+```sh
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+readonly NODE_EXPORTER_VERSION="1.0.0-rc.0"
+
+wget https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
+tar -xzvf node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
+cd node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64
+cp node_exporter /usr/local/bin
+
+# create user
+useradd --no-create-home --shell /bin/false node_exporter
+
+chown node_exporter:node_exporter /usr/local/bin/node_exporter
+
+echo '[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target' > /etc/systemd/system/node_exporter.service
+
+# Enable node_exporter in systemctl
+systemctl daemon-reload
+systemctl start node_exporter
+systemctl enable node_exporter
+
+echo "Setup complete.
+Add the following lines to /etc/prometheus/prometheus.yml:
+
+  - job_name: 'node_exporter'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9100']
+"
+```
+
+<!-- AUTO-GENERATED-CONTENT:END -->
 
 ```shell script
 vi /etc/prometheus/prometheus.yml
