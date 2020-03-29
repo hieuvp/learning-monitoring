@@ -77,22 +77,22 @@ set -eou pipefail
 readonly WORKING_DIR="/tmp/learning-monitoring"
 readonly GITHUB_REPO="prometheus/prometheus"
 
-readonly TARGET_PATTERN="\.linux-amd64\.tar\.gz"
-readonly NAME_PATTERN="^.+\"name\": \"(.+${TARGET_PATTERN})\".*$"
-readonly DOWNLOAD_URL_PATTERN="^.+\"browser_download_url\": \"(.+${TARGET_PATTERN})\".*$"
+readonly PACKAGE_TARGET="\.linux-amd64\.tar\.gz"
+readonly PACKAGE_NAME_PATTERN="^.+\"name\": \"(.+${PACKAGE_TARGET})\".*$"
+readonly PACKAGE_URL_PATTERN="^.+\"browser_download_url\": \"(.+${PACKAGE_TARGET})\".*$"
 
 set -x
 
 readonly PACKAGE_NAME=$(
   curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
-    | grep -E "$NAME_PATTERN" \
-    | sed -E "s/${NAME_PATTERN}/\1/g"
+    | grep -E "$PACKAGE_NAME_PATTERN" \
+    | sed -E "s/${PACKAGE_NAME_PATTERN}/\1/g"
 )
 
 readonly PACKAGE_URL=$(
   curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
-    | grep -E "$DOWNLOAD_URL_PATTERN" \
-    | sed -E "s/${DOWNLOAD_URL_PATTERN}/\1/g"
+    | grep -E "$PACKAGE_URL_PATTERN" \
+    | sed -E "s/${PACKAGE_URL_PATTERN}/\1/g"
 )
 
 rm -rf "$WORKING_DIR"
@@ -117,8 +117,8 @@ mkdir -p /etc/prometheus
 mkdir -p /var/lib/prometheus
 
 # Set ownership
-chown prometheus:prometheus /etc/prometheus
-chown prometheus:prometheus /var/lib/prometheus
+chown "${USERNAME}:${USERNAME}" /etc/prometheus
+chown "${USERNAME}:${USERNAME}" /var/lib/prometheus
 
 # Copy binaries
 cp prometheus /usr/local/bin/
