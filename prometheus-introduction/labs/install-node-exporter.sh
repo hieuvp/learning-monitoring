@@ -58,6 +58,7 @@ cd "$PACKAGE_DIRNAME"
 
 if systemctl stop node_exporter.service; then
   systemctl status node_exporter.service || true
+  systemctl disable node_exporter.service
 fi
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -69,7 +70,7 @@ if ! id -u node_exporter; then
 fi
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Copy binaries
+# Copy Node Exporter binary
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 cp node_exporter /usr/local/bin
@@ -98,7 +99,7 @@ systemctl enable node_exporter.service
 systemctl start node_exporter.service
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Final Step
+# Final instruction
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 echo "Setup complete.

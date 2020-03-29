@@ -59,6 +59,7 @@ cd "$PACKAGE_DIRNAME"
 
 if systemctl stop prometheus.service; then
   systemctl status prometheus.service || true
+  systemctl disable prometheus.service
 fi
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
