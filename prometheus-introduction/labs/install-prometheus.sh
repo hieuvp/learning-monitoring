@@ -1,20 +1,35 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1004
 
-set -eou pipefail
+set -eoux pipefail
 
-readonly WORKING_DIRECTORY="/tmp/learning-monitoring"
-readonly PROMETHEUS_VERSION="2.16.0"
+readonly WORKING_DIR="/tmp/learning-monitoring"
+readonly GITHUB_REPO="prometheus/prometheus"
 
-set -x
+readonly TARGET_PATTERN="\.linux-amd64\.tar\.gz"
+readonly NAME_PATTERN="^.+\"name\": \"(.+${TARGET_PATTERN})\".*$"
+readonly DOWNLOAD_URL_PATTERN="^.+\"browser_download_url\": \"(.+${TARGET_PATTERN})\".*$"
 
-rm -rf "$WORKING_DIRECTORY"
-mkdir "$WORKING_DIRECTORY"
-cd "$WORKING_DIRECTORY"
+readonly PACKAGE_NAME=$(
+  curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
+    | grep -E "$NAME_PATTERN" \
+    | sed -E "s/${NAME_PATTERN}/\1/g"
+)
 
-wget https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
-tar -xzvf prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
-cd prometheus-${PROMETHEUS_VERSION}.linux-amd64/
+readonly PACKAGE_URL=$(
+  curl --silent "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" \
+    | grep -E "$DOWNLOAD_URL_PATTERN" \
+    | sed -E "s/${DOWNLOAD_URL_PATTERN}/\1/g"
+)
+
+rm -rf "$WORKING_DIR"
+mkdir "$WORKING_DIR"
+cd "$WORKING_DIR"
+
+wget "$PACKAGE_URL"
+tar -xzvf "$PACKAGE_NAME"
+cd "${PACKAGE_NAME%.tar.gz}"
+
 # if you just want to start prometheus as root
 #./prometheus --config.file=prometheus.yml
 

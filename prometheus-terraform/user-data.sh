@@ -31,6 +31,9 @@ tar xf bash-5.0.tar.gz
 echo "LANG=en_US.utf-8" >> /etc/environment
 echo "LC_ALL=en_US.utf-8" >> /etc/environment
 
+## jq - Lightweight and Flexible command-line JSON processor
+yum -y install jq
+
 ## GitHub Repository
 yum -y install git
 git clone https://github.com/hieuvp/learning-monitoring.git
