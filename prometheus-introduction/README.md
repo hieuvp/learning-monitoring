@@ -89,6 +89,9 @@ cd prometheus-${PROMETHEUS_VERSION}.linux-amd64/
 # if you just want to start prometheus as root
 #./prometheus --config.file=prometheus.yml
 
+# Create user
+useradd --no-create-home --shell /bin/false prometheus
+
 # Create directories
 mkdir -p /etc/prometheus
 mkdir -p /var/lib/prometheus
@@ -139,10 +142,17 @@ systemctl start prometheus
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ```shell script
+cd /home/ec2-user/learning-monitoring/prometheus-introduction/labs
+sudo ./install-prometheus.sh
+```
+
+```shell script
 ps aux | grep prometheus
 ```
 
 - <http://prometheus.shopback.engineering:9090/graph>
+
+``
 
 ## Demo: Grafana with Prometheus Installation
 
