@@ -39,9 +39,9 @@ echo "LC_ALL=en_US.utf-8" >> /etc/environment
 
 ## GitHub Repository
 yum -y install git
-ssh-keyscan github.com >> ~/.ssh/known_hosts
-git clone git@github.com:hieuvp/learning-monitoring.git
-chown -R ${USERNAME}:${USERNAME} learning-monitoring
+chmod 400 .ssh/id_rsa
+runuser "$USERNAME" -c "ssh-keyscan github.com >> .ssh/known_hosts"
+runuser "$USERNAME" -c "git clone git@github.com:hieuvp/learning-monitoring.git"
 
 # If the instance does not behave the way you intended,
 # debug the following cloud-init output log file

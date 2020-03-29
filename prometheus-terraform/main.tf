@@ -33,12 +33,6 @@ resource "aws_instance" "this" {
     destination = "/home/${local.username}/.ssh/id_rsa"
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "chmod 400 /home/${local.username}/.ssh/id_rsa",
-    ]
-  }
-
   connection {
     type        = "ssh"
     host        = self.private_ip
