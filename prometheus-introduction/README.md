@@ -16,6 +16,7 @@
 - [Demo: node exporter for Linux](#demo-node-exporter-for-linux)
 - [Node Exporter for Windows (WMI Exporter)](#node-exporter-for-windows-wmi-exporter)
 - [Prometheus Architecture](#prometheus-architecture)
+- [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -104,3 +105,8 @@ journalctl -n100
 ## Prometheus Architecture
 
 <div align="center"><img src="assets/architecture.png" width="900"></div>
+
+## References
+
+- [Prometheus Overview](https://prometheus.io/docs/introduction/overview/)
+- [Exposing and Collecting Metrics](https://blog.pvincent.io/2017/12/prometheus-blog-series-part-3-exposing-and-collecting-metrics/)
