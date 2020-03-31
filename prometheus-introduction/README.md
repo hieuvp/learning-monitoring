@@ -63,6 +63,9 @@ make prometheus-terraform-destroy
 make prometheus-terraform-reset
 ```
 
+- `systemctl`: control the `systemd` system and service manager.
+- `journalctl`: query the `systemd` journal.
+
 ## Demo: Prometheus Installation
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-prometheus.sh) -->
@@ -370,8 +373,18 @@ ps aux | grep prometheus
 
 - <http://prometheus.shopback.engineering:9090/targets>
 - <http://prometheus.shopback.engineering:9090/metrics>
+- <http://prometheus.shopback.engineering:9090/config>
 
 ## Monitoring Nodes (Servers) with Prometheus
+
+- To monitor nodes, you need to install the node-exporter
+- The node exporter will expose machine metrics of Linux / \*Nix machines
+- For example: CPU Usage, Memory Usage
+
+- The node exporter can be used to monitor machines, and later on,
+  you can create alerts based on these ingested metrics.
+
+- For Windows, there's a WMI exporter (see <https://github.com/martinlindhe/wmi_exporter)>
 
 ## Demo: node exporter for Linux
 
