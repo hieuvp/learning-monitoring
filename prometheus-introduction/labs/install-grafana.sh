@@ -2,6 +2,15 @@
 
 set -eou pipefail
 
+# Verify the current effective user
+if [[ "$(whoami)" != "root" ]]; then
+  printf "\e[31m"
+  printf "ERROR: You must execute this script as the superuser (root)"
+  printf "\e[0m"
+
+  exit 1
+fi
+
 # Add Grafana RPM repository to YUM
 echo '[grafana]
 name=grafana
@@ -19,6 +28,9 @@ yum -y update
 yum -y install grafana
 
 find /usr/lib/systemd/system -name '*grafana*'
+# Created symlink
+# from /etc/systemd/system/multi-user.target.wants/grafana-server.service
+# to /usr/lib/systemd/system/grafana-server.service
 
 systemctl daemon-reload
 systemctl enable grafana-server.service

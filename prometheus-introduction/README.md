@@ -76,6 +76,15 @@ set -eou pipefail
 
 readonly WORKING_DIR="/tmp/monitoring-tools"
 
+# Verify the current effective user
+if [[ "$(whoami)" != "root" ]]; then
+  printf "\e[31m"
+  printf "ERROR: You must execute this script as the superuser (root)"
+  printf "\e[0m"
+
+  exit 1
+fi
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Prepare the package
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,6 +235,15 @@ ps aux | grep prometheus
 
 set -eou pipefail
 
+# Verify the current effective user
+if [[ "$(whoami)" != "root" ]]; then
+  printf "\e[31m"
+  printf "ERROR: You must execute this script as the superuser (root)"
+  printf "\e[0m"
+
+  exit 1
+fi
+
 # Add Grafana RPM repository to YUM
 echo '[grafana]
 name=grafana
@@ -243,6 +261,9 @@ yum -y update
 yum -y install grafana
 
 find /usr/lib/systemd/system -name '*grafana*'
+# Created symlink
+# from /etc/systemd/system/multi-user.target.wants/grafana-server.service
+# to /usr/lib/systemd/system/grafana-server.service
 
 systemctl daemon-reload
 systemctl enable grafana-server.service
@@ -259,6 +280,22 @@ ps aux | grep grafana
   `admin`/`admin`
 
 ## Basic Concepts
+
+- All data is stored as time series.
+- Every time series is identified by the **metric name**
+  and a set of **key-value pairs**, called **labels**.
+
+metric: go_memstat_alloc_bytes
+instance=localhost:9090
+job=prometheus
+
+instance=localhost:9100
+job=node_exporter
+
+- The time series data also consists of the **actual data**, called **Samples**:
+
+  - It can be a **float64** value
+  - or a **millisecond-precision timestamp**
 
 ## Prometheus Configuration
 
@@ -282,6 +319,15 @@ kill -SIGHUP <pid>
 set -eou pipefail
 
 readonly WORKING_DIR="/tmp/monitoring-tools"
+
+# Verify the current effective user
+if [[ "$(whoami)" != "root" ]]; then
+  printf "\e[31m"
+  printf "ERROR: You must execute this script as the superuser (root)"
+  printf "\e[0m"
+
+  exit 1
+fi
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Prepare the package
