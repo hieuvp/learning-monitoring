@@ -79,7 +79,7 @@ readonly WORKING_DIR="/tmp/monitoring-tools"
 # Verify the current effective user
 if [[ "$(whoami)" != "root" ]]; then
   printf "\e[31m"
-  printf "ERROR: You must execute this script as the superuser (root)"
+  echo "ERROR: You must execute this script as the superuser (root)"
   printf "\e[0m"
 
   exit 1
@@ -238,7 +238,7 @@ set -eou pipefail
 # Verify the current effective user
 if [[ "$(whoami)" != "root" ]]; then
   printf "\e[31m"
-  printf "ERROR: You must execute this script as the superuser (root)"
+  echo "ERROR: You must execute this script as the superuser (root)"
   printf "\e[0m"
 
   exit 1
@@ -297,14 +297,79 @@ job=node_exporter
   - It can be a **float64** value
   - or a **millisecond-precision timestamp**
 
+- The notation of time series is often using this notation:
+
+`<metric name>{<label name>=<label value>,...`
+
+- For example:
+- node_boot_time{instance="localhost:9100",job="node_exporter"}
+
 ## Prometheus Configuration
 
+- The configuration is stored in the Prometheus configuration file, in yaml format.
+- The configuration file can be changed and applied, without having to restart Prometheus.
+
+- A reload can be done by executing:
+
 ```shell script
-# A reload can be done by executing
 kill -SIGHUP <pid>
 ```
 
+- You can also pass parameters (flags) at **startup time** to `./prometheus`
+- Those parameters cannot be changed without restarting Prometheus.
+- The configuration file is passed using the flag `--config.file`
+
+- The default configuration looks like this:
+
+<!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/prometheus.yml) -->
+<!-- The below code snippet is automatically added from labs/prometheus.yml -->
+
+```yml
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+        # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+# - "first_rules.yml"
+# - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["localhost:9090"]
+```
+
+<!-- AUTO-GENERATED-CONTENT:END -->
+
+- To scape metrics, you need to add a configuration to the prometheus config file
+
+- For example, to scape metrics from prometheus itself, the following code block is added by default.
+
 ## Demo: Prometheus Config file
+
+```shell script
+ps aux | grep prometheus
+```
+
+- <http://prometheus.shopback.engineering:9090/targets>
+- <http://prometheus.shopback.engineering:9090/metrics>
 
 ## Monitoring Nodes (Servers) with Prometheus
 
@@ -323,7 +388,7 @@ readonly WORKING_DIR="/tmp/monitoring-tools"
 # Verify the current effective user
 if [[ "$(whoami)" != "root" ]]; then
   printf "\e[31m"
-  printf "ERROR: You must execute this script as the superuser (root)"
+  echo "ERROR: You must execute this script as the superuser (root)"
   printf "\e[0m"
 
   exit 1
@@ -438,43 +503,6 @@ Add the following lines to /etc/prometheus/prometheus.yml:
     static_configs:
       - targets: ['localhost:9100']
 "
-```
-
-<!-- AUTO-GENERATED-CONTENT:END -->
-
-<!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/prometheus.yml) -->
-<!-- The below code snippet is automatically added from labs/prometheus.yml -->
-
-```yml
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-        # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-# - "first_rules.yml"
-# - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["localhost:9090"]
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->

@@ -7,7 +7,7 @@ readonly WORKING_DIR="/tmp/monitoring-tools"
 # Verify the current effective user
 if [[ "$(whoami)" != "root" ]]; then
   printf "\e[31m"
-  printf "ERROR: You must execute this script as the superuser (root)"
+  echo "ERROR: You must execute this script as the superuser (root)"
   printf "\e[0m"
 
   exit 1
