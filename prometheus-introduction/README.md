@@ -46,6 +46,8 @@
 - It is written in Go.
 - Many client libraries and integrations available.
 
+How does Prometheus work?
+
 - Prometheus collects metrics from monitored targets by scraping metrics HTTP endpoints.
 
 <div align="center"><img src="assets/scraping-metrics.png" width="600"></div>
