@@ -32,8 +32,13 @@
 - It fits very well in the cloud native infrastructure.
 - Prometheus is also a member of the CNCF (Cloud Native Foundation).
 
-- In Prometheus we talk about Dimensional Data: time series are identified
-  by metric name and a se of key/value pairs.
+- In Prometheus we talk about **Dimensional Data**: time series are identified
+  by metric name and a set of key/value pairs.
+
+| Metric Name |      Label       | Sample |
+| :---------: | :--------------: | :----: |
+| Temperature | location=outside |   90   |
+
 - Prometheus includes a Flexible Query Language.
 - Visualizations can be shown using a built-in expression browser
   or with integrations like Grafana.
@@ -49,7 +54,7 @@
   (except this is also how Google's Borgmon works).
 - Rather than using custom scripts that check on particular services and systems,
   the monitoring data itself is used.
-- Scraping endpoints is much more effiecient than other mechanisms,
+- Scraping endpoints is much more efficient than other mechanisms,
   like 3rd party agents.
 - A single prometheus server is able to ingest up to one million samples
   per second as several million time series.
@@ -65,6 +70,7 @@ make prometheus-terraform-reset
 
 - `systemctl`: control the `systemd` system and service manager.
 - `journalctl`: query the `systemd` journal.
+- `ps`: information about running processes.
 
 ## Demo: Prometheus Installation
 
