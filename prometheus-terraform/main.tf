@@ -57,16 +57,3 @@ resource "cloudflare_record" "this" {
   ttl     = "1"
   proxied = "false"
 }
-
-# shopback.engineering
-# https://console.aws.amazon.com/acm/home?region=us-east-1#/?id=762773b3-1dfd-4eda-bdbd-d5f57801197a
-# Only be used for
-# - CloudFront
-# - ELB
-# https://aws.amazon.com/premiumsupport/knowledge-center/configure-acm-certificates-ec2/
-# https://www.sumologic.com/insight/aws-elastic-load-balancers-classic-vs-application/
-
-# Cloudflare SSL/TLS
-# Just switch to proxied = true
-# However, IP must be public in order to proxiable from Cloudflare
-
