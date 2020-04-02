@@ -65,14 +65,11 @@
 </div>
 <br />
 
-- This is fundamentally different from other monitoring and alerting systems,
-  (except this is also how Google's Borgmon works).
-- Rather than using custom scripts that check on particular services and systems,
-  the monitoring data itself is used.
-- Scraping endpoints is much more efficient than other mechanisms,
-  like 3rd party agents.
-- A single prometheus server is able to ingest up to one million samples
-  per second as several million time series.
+- **Rather than using custom scripts** that check on particular services and systems,
+  the **monitoring data itself is used**.
+- Scraping endpoints is much more efficient than other mechanisms (e.g. 3rd party agents).
+- A single prometheus server is able to ingest
+  up to one million samples per second as several million time series.
 
 ## Architecture
 
@@ -94,9 +91,9 @@ make prometheus-terraform-destroy
 make prometheus-terraform-reset
 ```
 
+- `ps`: information about running processes.
 - `systemctl`: control the `systemd` system and service manager.
 - `journalctl`: query the `systemd` journal.
-- `ps`: information about running processes.
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-prometheus.sh) -->
 <!-- The below code snippet is automatically added from labs/install-prometheus.sh -->
