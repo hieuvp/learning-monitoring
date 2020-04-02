@@ -75,11 +75,11 @@
 
 <div align="center"><img src="assets/architecture.png" width="900"></div>
 
-- The main Prometheus server which scrapes and stores time series data.
+- The main **Prometheus Server** which scrapes and stores time series data.
 - Client libraries for instrumenting application code.
-- A push gateway for supporting short-lived jobs.
+- A **Push Gateway** for supporting short-lived jobs.
 - Special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.
-- An alertmanager to handle alerts.
+- An **Alert Manager** to handle alerts.
 - Various support tools.
 
 ## Prometheus Installation
