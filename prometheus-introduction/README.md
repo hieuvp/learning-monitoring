@@ -15,7 +15,7 @@
 - [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
 - [Demo: node exporter for Linux](#demo-node-exporter-for-linux)
 - [Node Exporter for Windows (WMI Exporter)](#node-exporter-for-windows-wmi-exporter)
-- [Prometheus Architecture](#prometheus-architecture)
+- [Architecture](#architecture)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -28,8 +28,15 @@ and can trigger alerts if some condition is observed to be true.
 
 Main features are:
 
-- A multi-dimensional data model with time series data identified by metric name and key/value pairs.
-- PromQL, a flexible query language to leverage this dimensionality.
+- A multi-dimensional data model with time series data
+  identified by metric name and key/value pairs.
+
+  | Metric Name |      Label       | Sample |
+  | :---------: | :--------------: | :----: |
+  | Temperature | location=outside |   90   |
+
+- `PromQL` (Prometheus Query Language),
+  a flexible query language to leverage this dimensionality.
 - No reliance on distributed storage; single server nodes are autonomous.
 - Time series collection happens via a pull model over HTTP.
 - Pushing time series is supported via an intermediary gateway.
@@ -41,14 +48,6 @@ Main features are:
   to then send alerts based on this data.
 - It fits very well in the cloud native infrastructure.
 
-- In Prometheus we talk about **Dimensional Data**: time series are identified
-  by metric name and a set of key/value pairs.
-
-| Metric Name |      Label       | Sample |
-| :---------: | :--------------: | :----: |
-| Temperature | location=outside |   90   |
-
-- Prometheus includes a Flexible Query Language.
 - Visualizations can be shown using a built-in expression browser
   or with integrations like Grafana.
 - It stores metrics in memory and local disk in an own custom, efficient format
@@ -61,7 +60,7 @@ How does Prometheus work?
 
 <div align="center"><img src="assets/scraping-metrics.png" width="550"></div>
 
-- This is fundamentally different than other monitoring and alerting systems,
+- This is fundamentally different from other monitoring and alerting systems,
   (except this is also how Google's Borgmon works).
 - Rather than using custom scripts that check on particular services and systems,
   the monitoring data itself is used.
@@ -553,7 +552,7 @@ journalctl -n100
 
 ## Node Exporter for Windows (WMI Exporter)
 
-## Prometheus Architecture
+## Architecture
 
 <div align="center"><img src="assets/architecture.png" width="900"></div>
 
