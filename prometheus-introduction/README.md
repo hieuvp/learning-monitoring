@@ -55,7 +55,7 @@
 ## Collecting Metrics
 
 <div align="center">
-  <img src="assets/scraping-metrics.png" width="550">
+  <img src="assets/collecting-metrics.png" width="550">
   <br />
   <em>
     <strong>Prometheus</strong> collects metrics from monitored targets by
