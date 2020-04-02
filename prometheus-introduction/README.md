@@ -9,13 +9,11 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Introduction to Prometheus](#introduction-to-prometheus)
-  - [Main Features](#main-features)
-  - [How Does Prometheus Work](#how-does-prometheus-work)
+- [Main Features](#main-features)
+- [Exposing and Collecting Metrics](#exposing-and-collecting-metrics)
 - [Architecture](#architecture)
 - [Prometheus Installation](#prometheus-installation)
-- [Demo: Prometheus Installation](#demo-prometheus-installation)
-- [Demo: Grafana with Prometheus Installation](#demo-grafana-with-prometheus-installation)
+- [Grafana with Prometheus Installation](#grafana-with-prometheus-installation)
 - [Basic Concepts](#basic-concepts)
 - [Prometheus Configuration](#prometheus-configuration)
 - [Demo: Prometheus Config file](#demo-prometheus-config-file)
@@ -26,9 +24,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Introduction to Prometheus
-
-### Main Features
+## Main Features
 
 - A multi-dimensional data model with time series data
   identified by metric name and key/value pairs.
@@ -56,7 +52,7 @@
 - It is written in Go.
 - Many client libraries and integrations available.
 
-### How Does Prometheus Work
+## Exposing and Collecting Metrics
 
 - Prometheus collects metrics from monitored targets by **scraping metrics HTTP endpoints**.
 
@@ -94,8 +90,6 @@ make prometheus-terraform-reset
 - `systemctl`: control the `systemd` system and service manager.
 - `journalctl`: query the `systemd` journal.
 - `ps`: information about running processes.
-
-## Demo: Prometheus Installation
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-prometheus.sh) -->
 <!-- The below code snippet is automatically added from labs/install-prometheus.sh -->
@@ -257,7 +251,7 @@ ps aux | grep prometheus
 
 ``
 
-## Demo: Grafana with Prometheus Installation
+## Grafana with Prometheus Installation
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-grafana.sh) -->
 <!-- The below code snippet is automatically added from labs/install-grafana.sh -->
