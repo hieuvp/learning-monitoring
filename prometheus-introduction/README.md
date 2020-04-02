@@ -22,12 +22,24 @@
 
 ## Introduction to Prometheus
 
+Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
+
+Prometheus's main distinguishing features as compared to other monitoring systems are:
+
+- a multi-dimensional data model (timeseries defined by metric name and set of key/value dimensions)
+- a flexible query language to leverage this dimensionality
+- no dependency on distributed storage; single server nodes are autonomous
+- time-series collection happens via a pull model over HTTP
+- pushing time-series is supported via an intermediary gateway
+- targets are discovered via service discovery or static configuration
+- multiple modes of graphing and dashboarding support
+- support for hierarchical and horizontal federation
+
 - Prometheus provides Metrics & Alerting.
 - It is inspired by Google's Borgmon,
   which uses time-series data as a datasource,
   to then send alerts based on this data.
 - It fits very well in the cloud native infrastructure.
-- Prometheus is also a member of the CNCF (Cloud Native Foundation).
 
 - In Prometheus we talk about **Dimensional Data**: time series are identified
   by metric name and a set of key/value pairs.
