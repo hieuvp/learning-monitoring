@@ -1,11 +1,18 @@
 # Prometheus Introduction
 
+> Prometheus collects metrics from configured targets at given intervals,
+> evaluates rule expressions, displays the results,
+> and can trigger alerts if some condition is observed to be true.
+
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Introduction to Prometheus](#introduction-to-prometheus)
+  - [Main Features](#main-features)
+  - [How Does Prometheus Work](#how-does-prometheus-work)
+- [Architecture](#architecture)
 - [Prometheus Installation](#prometheus-installation)
 - [Demo: Prometheus Installation](#demo-prometheus-installation)
 - [Demo: Grafana with Prometheus Installation](#demo-grafana-with-prometheus-installation)
@@ -15,18 +22,13 @@
 - [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
 - [Demo: node exporter for Linux](#demo-node-exporter-for-linux)
 - [Node Exporter for Windows (WMI Exporter)](#node-exporter-for-windows-wmi-exporter)
-- [Architecture](#architecture)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction to Prometheus
 
-It collects metrics from configured targets at given intervals,
-evaluates rule expressions, displays the results,
-and can trigger alerts if some condition is observed to be true.
-
-Main features are:
+### Main Features
 
 - A multi-dimensional data model with time series data
   identified by metric name and key/value pairs.
@@ -54,7 +56,7 @@ Main features are:
 - It is written in Go.
 - Many client libraries and integrations available.
 
-How does Prometheus work?
+### How Does Prometheus Work
 
 - Prometheus collects metrics from monitored targets by **scraping metrics HTTP endpoints**.
 
@@ -68,6 +70,10 @@ How does Prometheus work?
   like 3rd party agents.
 - A single prometheus server is able to ingest up to one million samples
   per second as several million time series.
+
+## Architecture
+
+<div align="center"><img src="assets/architecture.png" width="900"></div>
 
 ## Prometheus Installation
 
@@ -551,10 +557,6 @@ journalctl -n100
 - <http://prometheus.shopback.engineering:9090/targets>
 
 ## Node Exporter for Windows (WMI Exporter)
-
-## Architecture
-
-<div align="center"><img src="assets/architecture.png" width="900"></div>
 
 ## References
 
