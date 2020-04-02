@@ -11,7 +11,7 @@
 
 - [Main Features](#main-features)
 - [Collecting Metrics](#collecting-metrics)
-- [Architecture](#architecture)
+- [Components and Architecture](#components-and-architecture)
 - [Prometheus Installation](#prometheus-installation)
 - [Grafana with Prometheus Installation](#grafana-with-prometheus-installation)
 - [Basic Concepts](#basic-concepts)
@@ -71,9 +71,11 @@
 - A single prometheus server is able to ingest
   up to one million samples per second as several million time series.
 
-## Architecture
+## Components and Architecture
 
 <div align="center"><img src="assets/architecture.png" width="900"></div>
+
+The Prometheus ecosystem consists of multiple components, many of which are optional:
 
 - The main **Prometheus Server** which scrapes and stores time series data.
 - Client libraries for instrumenting application code.
@@ -81,6 +83,8 @@
 - Special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.
 - An **Alert Manager** to handle alerts.
 - Various support tools.
+
+Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
 
 ## Prometheus Installation
 
