@@ -48,9 +48,9 @@
 
 How does Prometheus work?
 
-- Prometheus collects metrics from monitored targets by scraping metrics HTTP endpoints.
+- Prometheus collects metrics from monitored targets by **scraping metrics HTTP endpoints**.
 
-<div align="center"><img src="assets/scraping-metrics.png" width="600"></div>
+<div align="center"><img src="assets/scraping-metrics.png" width="520"></div>
 
 - This is fundamentally different than other monitoring and alerting systems,
   (except this is also how Google's Borgmon works).
