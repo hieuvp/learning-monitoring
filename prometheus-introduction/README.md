@@ -22,9 +22,6 @@
 
 ## Introduction to Prometheus
 
-- Prometheus is an Open source monitoring solution.
-- Started at SoundCloud around 2012-2013,
-  and was made public in early 2015.
 - Prometheus provides Metrics & Alerting.
 - It is inspired by Google's Borgmon,
   which uses time-series data as a datasource,
