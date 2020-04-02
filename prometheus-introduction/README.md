@@ -74,6 +74,7 @@
 ## Components and Architecture
 
 <div align="center"><img src="assets/architecture.png" width="900"></div>
+<br />
 
 The Prometheus ecosystem consists of multiple components, many of which are optional:
 
