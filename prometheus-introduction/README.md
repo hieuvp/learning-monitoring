@@ -79,7 +79,7 @@
 The Prometheus ecosystem consists of multiple components, many of which are optional:
 
 - The main **Prometheus Server** which scrapes and stores time series data.
-- Client libraries for instrumenting application code.
+- **Client Libraries** for instrumenting application code.
 - A **Push Gateway** for supporting **Short-lived Jobs**.
 - Special-purpose **Exporters** for services like HAProxy, StatsD, Graphite, etc.
 - An **Alert Manager** to handle alerts.
