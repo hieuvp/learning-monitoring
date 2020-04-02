@@ -54,9 +54,13 @@
 
 ## Exposing and Collecting Metrics
 
-- Prometheus collects metrics from monitored targets by **scraping metrics HTTP endpoints**.
-
-<div align="center"><img src="assets/scraping-metrics.png" width="550"></div>
+<div align="center">
+  <img src="assets/scraping-metrics.png" width="550">
+  <br />
+  <em>Prometheus collects metrics from monitored targets by <strong>scraping metrics HTTP endpoints</strong></em>
+  <br />
+</div>
+<br />
 
 - This is fundamentally different from other monitoring and alerting systems,
   (except this is also how Google's Borgmon works).
