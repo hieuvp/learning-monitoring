@@ -10,7 +10,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Main Features](#main-features)
-- [Exposing and Collecting Metrics](#exposing-and-collecting-metrics)
+- [Collecting Metrics](#collecting-metrics)
 - [Architecture](#architecture)
 - [Prometheus Installation](#prometheus-installation)
 - [Grafana with Prometheus Installation](#grafana-with-prometheus-installation)
@@ -52,12 +52,15 @@
 - It is written in Go.
 - Many client libraries and integrations available.
 
-## Exposing and Collecting Metrics
+## Collecting Metrics
 
 <div align="center">
   <img src="assets/scraping-metrics.png" width="550">
   <br />
-  <em>Prometheus collects metrics from monitored targets by <strong>scraping metrics HTTP endpoints</strong></em>
+  <em>
+    <strong>Prometheus</strong> collects metrics from monitored targets by
+    <strong>scraping metrics HTTP endpoints</strong>
+  </em>
   <br />
 </div>
 <br />
