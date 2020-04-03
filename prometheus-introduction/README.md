@@ -106,7 +106,7 @@ Most Prometheus components are written in Go, making them easy to build and depl
   - `job="prometheus"`
 
 <br />
-<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="860"></div>
+<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="820"></div>
 <br />
 
 - The time series data also consists of the **actual data**, called **Samples**:
