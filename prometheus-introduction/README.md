@@ -113,12 +113,12 @@ Most Prometheus components are written in Go, making them easy to build and depl
   - It can be a **float64** value
   - or a **millisecond-precision timestamp**
 
-- The notation of time series is often using this notation:
+- The notation of time series is often using this **notation**:
 
-`<metric name>{<label name>=<label value>,...`
+  - `<metric name>{<label name>=<label value>,...}`
 
 - For example:
-- node_boot_time{instance="localhost:9100",job="node_exporter"}
+  - `node_boot_time_seconds{instance="localhost:9100",job="node_exporter"}`
 
 ## Prometheus Installation
 
