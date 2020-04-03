@@ -90,6 +90,7 @@ Most Prometheus components are written in Go, making them easy to build and depl
 ## Basic Concepts
 
 <div align="center"><img src="assets/go-memstats-alloc-bytes.png" width="900"></div>
+<br />
 
 - All data is stored as time series.
 - Every time series is identified by the **metric name**
