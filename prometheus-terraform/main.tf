@@ -1,11 +1,8 @@
-provider "aws" {
-  region = "ap-southeast-1"
-}
-
 locals {
   application = "Prometheus"
   environment = "Test"
 
+  region        = "ap-southeast-1"
   ami           = "ami-0cbc6aae997c6538a" # Amazon Linux 2
   username      = "ec2-user"
   instance_type = "t2.micro"
