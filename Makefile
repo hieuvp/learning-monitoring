@@ -71,3 +71,8 @@ prometheus-terraform-reset:
 	cd prometheus-terraform \
 	&& terraform destroy -auto-approve \
 	&& terraform apply -auto-approve
+
+.PHONY: prometheus-terraform-output
+prometheus-terraform-output:
+	cd prometheus-terraform \
+	&& terraform output

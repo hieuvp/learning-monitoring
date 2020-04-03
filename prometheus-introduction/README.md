@@ -127,6 +127,7 @@ make prometheus-terraform-plan
 make prometheus-terraform-apply
 make prometheus-terraform-destroy
 make prometheus-terraform-reset
+make prometheus-terraform-output
 ```
 
 - `ps`: information about running processes.
