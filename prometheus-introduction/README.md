@@ -89,20 +89,25 @@ Most Prometheus components are written in Go, making them easy to build and depl
 
 ## Basic Concepts
 
-<div align="center"><img src="assets/go-memstats-alloc-bytes.png" width="900"></div>
+<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 <br />
 
 - All data is stored as time series.
 - Every time series is identified by the **metric name**
   and a set of **key-value pairs**, called **labels**.
 
-- metric: `go_memstats_alloc_bytes`
+- Metric: `go_memstats_alloc_bytes`
+- Labels:
 
   - `instance="localhost:9100"`
   - `job="node_exporter"`
 
   - `instance="localhost:9090"`
   - `job="prometheus"`
+
+<br />
+<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="900"></div>
+<br />
 
 - The time series data also consists of the **actual data**, called **Samples**:
 
