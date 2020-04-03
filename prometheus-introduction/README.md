@@ -12,9 +12,9 @@
 - [Main Features](#main-features)
 - [Collecting Metrics](#collecting-metrics)
 - [Components and Architecture](#components-and-architecture)
+- [Basic Concepts](#basic-concepts)
 - [Prometheus Installation](#prometheus-installation)
 - [Grafana with Prometheus Installation](#grafana-with-prometheus-installation)
-- [Basic Concepts](#basic-concepts)
 - [Prometheus Configuration](#prometheus-configuration)
 - [Demo: Prometheus Config file](#demo-prometheus-config-file)
 - [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
@@ -86,6 +86,31 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 - Various support tools.
 
 Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
+
+## Basic Concepts
+
+- All data is stored as time series.
+- Every time series is identified by the **metric name**
+  and a set of **key-value pairs**, called **labels**.
+
+metric: go_memstat_alloc_bytes
+instance=localhost:9090
+job=prometheus
+
+instance=localhost:9100
+job=node_exporter
+
+- The time series data also consists of the **actual data**, called **Samples**:
+
+  - It can be a **float64** value
+  - or a **millisecond-precision timestamp**
+
+- The notation of time series is often using this notation:
+
+`<metric name>{<label name>=<label value>,...`
+
+- For example:
+- node_boot_time{instance="localhost:9100",job="node_exporter"}
 
 ## Prometheus Installation
 
@@ -313,31 +338,6 @@ ps aux | grep grafana
 
 - <http://prometheus.shopback.engineering:3000/login>
   `admin`/`admin`
-
-## Basic Concepts
-
-- All data is stored as time series.
-- Every time series is identified by the **metric name**
-  and a set of **key-value pairs**, called **labels**.
-
-metric: go_memstat_alloc_bytes
-instance=localhost:9090
-job=prometheus
-
-instance=localhost:9100
-job=node_exporter
-
-- The time series data also consists of the **actual data**, called **Samples**:
-
-  - It can be a **float64** value
-  - or a **millisecond-precision timestamp**
-
-- The notation of time series is often using this notation:
-
-`<metric name>{<label name>=<label value>,...`
-
-- For example:
-- node_boot_time{instance="localhost:9100",job="node_exporter"}
 
 ## Prometheus Configuration
 
