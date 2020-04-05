@@ -27,11 +27,6 @@
 
 - `PromQL` (Prometheus Query Language),
   a flexible query language to leverage this dimensionality.
-- No reliance on distributed storage; single server nodes are autonomous.
-
-- Pushing time series is supported via an intermediary gateway.
-- Targets are discovered via service discovery or static configuration.
-- Multiple modes of graphing and dashboarding support.
 
 - It is inspired by Google's Borgmon,
   which uses time-series data as a datasource,
@@ -100,6 +95,11 @@
 
 <div align="center"><img src="assets/architecture.png" width="900"></div>
 <br />
+
+- No reliance on distributed storage; single server nodes are autonomous.
+- Pushing time series is supported via an intermediary gateway.
+- Targets are discovered via service discovery or static configuration.
+- Multiple modes of graphing and dashboarding support.
 
 The Prometheus ecosystem consists of multiple components, many of which are optional:
 
