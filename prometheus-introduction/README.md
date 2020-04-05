@@ -19,11 +19,7 @@
 ## Basic Concepts
 
 - A multi-dimensional data model with **time series data**
-  identified by **metric name** and **key/value pairs**.
-
-  | Metric Name |      Label       | Sample |
-  | :---------: | :--------------: | :----: |
-  | Temperature | location=outside |   90   |
+  identified by **metric name** and **key/value pairs** (called **labels**).
 
 - `PromQL` (Prometheus Query Language),
   a flexible query language to leverage this dimensionality.
@@ -32,10 +28,8 @@
 <br />
 
 - All data is stored as time series.
-- Every time series is identified by the **metric name**
-  and a set of **key-value pairs**, called **labels**.
 
-- Metric: `go_memstats_alloc_bytes`
+- Metric Name: `go_memstats_alloc_bytes`
 - Labels:
 
   - `instance="localhost:9100"`
