@@ -18,7 +18,7 @@
 
 ## Basic Concepts
 
-- A multi-dimensional data model with time series data
+- A multi-dimensional data model with **time series data**
   identified by **metric name** and **key/value pairs**.
 
   | Metric Name |      Label       | Sample |
@@ -28,9 +28,7 @@
 - `PromQL` (Prometheus Query Language),
   a flexible query language to leverage this dimensionality.
 
-- It is inspired by Google's Borgmon,
-  which uses time-series data as a datasource,
-  to then send alerts based on this data.
+- Use time-series data as a datasource, to then send alerts based on this data.
 
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 <br />
