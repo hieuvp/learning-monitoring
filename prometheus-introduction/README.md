@@ -29,7 +29,7 @@
 
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="895"></div>
 
-- **Notation**: `<metric name>{<label name>=<label value>, ...}`
+- **Notation**: `<metric name>{<label name>=<label value>, ...}`.
 - **Metric name**: `go_memstats_alloc_bytes`.
 - **Labels**: `instance="localhost:9100"`, `job="node_exporter"`, `instance="localhost:9090"`, `job="prometheus"`.
 
