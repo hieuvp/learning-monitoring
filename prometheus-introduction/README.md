@@ -27,18 +27,22 @@
   a flexible query language to leverage this dimensionality.
 
 <br />
+
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 
 - **Metric name**: `go_memstats_alloc_bytes`.
 - **Labels**: `instance="localhost:9100"`, `job="node_exporter"`, `instance="localhost:9090"`, `job="prometheus"`.
 
 <br />
+
 <div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="820"></div>
 
-- The time series data also consists of the **actual data**, called **Samples**:
+**Samples** form the actual time series data. Each **sample** consists of:
 
-  - It can be a **float64** value
-  - or a **millisecond-precision timestamp**
+- A **float64 value**.
+- A **millisecond-precision timestamp**.
+
+<br />
 
 - **Notation**: `<metric name>{<label name>=<label value>, ...}`
 - For example: `node_boot_time_seconds{instance="localhost:9100",job="node_exporter"}`
