@@ -36,8 +36,6 @@
 - Visualizations can be shown using a built-in expression browser
   or with integrations like Grafana.
 - It stores metrics in memory and local disk in an own custom, efficient format
-- It is written in Go.
-- Many client libraries and integrations available.
 
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 <br />
@@ -111,6 +109,11 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 - Various support tools.
 
 Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
+
+Prometheus
+
+- It is written in Go.
+- Many client libraries and integrations available.
 
 ## References
 
