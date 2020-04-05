@@ -17,6 +17,12 @@ yum -y group install "Development Tools"
 ## htop - Interactive Process Viewer
 yum -y install htop
 
+## tree - List Contents of Directories in a Tree-like Format
+yum -y install tree
+
+## jq - Lightweight and Flexible Command-line JSON Processor
+yum -y install jq
+
 ## Bash 5.0
 curl -O http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
 tar xf bash-5.0.tar.gz
@@ -33,8 +39,9 @@ echo "LC_ALL=en_US.utf-8" >> /etc/environment
 
 ## GitHub Repository
 yum -y install git
-git clone https://github.com/hieuvp/learning-monitoring.git
-chown -R ${USERNAME}:${USERNAME} learning-monitoring
+chmod 400 .ssh/id_rsa
+runuser "$USERNAME" -c "ssh-keyscan github.com >> .ssh/known_hosts"
+runuser "$USERNAME" -c "git clone git@github.com:hieuvp/learning-monitoring.git"
 
 # If the instance does not behave the way you intended,
 # debug the following cloud-init output log file
