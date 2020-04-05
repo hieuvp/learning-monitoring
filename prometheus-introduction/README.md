@@ -20,17 +20,14 @@
 
 > Prometheus fundamentally stores all data as **time series**.
 
-<br />
-
-- A multi-dimensional data model with **time series data**
-  identified by **metric name** and **key/value pairs** (called **labels**).
-
-- `PromQL` (**Prometheus Query Language**),
-  a flexible query language to leverage this dimensionality.
+1. A multi-dimensional data model with **time series data**
+   identified by **metric name** and **key/value pairs** (called **labels**).
+1. `PromQL` (**Prometheus Query Language**),
+   a flexible query language to leverage this dimensionality.
 
 <br />
 
-<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="890"></div>
+<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="895"></div>
 
 - **Notation**: `<metric name>{<label name>=<label value>, ...}`
 - **Metric name**: `go_memstats_alloc_bytes`.
