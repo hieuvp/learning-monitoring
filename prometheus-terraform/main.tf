@@ -3,10 +3,10 @@ locals {
   environment = "Test"
 
   region        = "ap-southeast-1"
+  instance_type = "t2.micro"
+  volume_size   = "20"                    # In gibibytes (GiB)
   ami           = "ami-0cbc6aae997c6538a" # Amazon Linux 2
   username      = "ec2-user"
-  instance_type = "t2.micro"
-  volume_size   = "20" # In gibibytes (GiB)
 
   domain_name = "shopback.engineering"
   domain_id   = data.cloudflare_zones.this.zones[0].id
@@ -15,20 +15,14 @@ locals {
 
 # Create an EC2 instance on AWS
 resource "aws_instance" "this" {
-  ami           = local.ami
   instance_type = local.instance_type
 
   root_block_device {
     volume_size = local.volume_size
   }
 
-  key_name         = var.ssh_key_name
-  user_data_base64 = filebase64("${path.root}/user-data.sh")
-
-  provisioner "file" {
-    source      = "~/.ssh/id_rsa"
-    destination = "/home/${local.username}/.ssh/id_rsa"
-  }
+  ami      = local.ami
+  key_name = var.ssh_key_name
 
   connection {
     type        = "ssh"
@@ -36,6 +30,13 @@ resource "aws_instance" "this" {
     user        = local.username
     private_key = file(var.ssh_key_path)
   }
+
+  provisioner "file" {
+    source      = "~/.ssh/id_rsa"
+    destination = "~/.ssh/id_rsa"
+  }
+
+  user_data_base64 = filebase64("${path.root}/user-data.sh")
 
   tags = {
     Name        = "${upper(local.environment)}-${lower(local.application)}"
