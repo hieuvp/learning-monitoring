@@ -30,7 +30,7 @@
 
 <br />
 
-<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="880"></div>
+<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="890"></div>
 
 - **Notation**: `<metric name>{<label name>=<label value>, ...}`
 - **Metric name**: `go_memstats_alloc_bytes`.
