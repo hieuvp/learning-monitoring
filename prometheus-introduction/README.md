@@ -9,15 +9,14 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Main Features](#main-features)
+- [Basic Concepts](#basic-concepts)
 - [Collecting Metrics](#collecting-metrics)
 - [Components and Architecture](#components-and-architecture)
-- [Basic Concepts](#basic-concepts)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Main Features
+## Basic Concepts
 
 - A multi-dimensional data model with time series data
   identified by **metric name** and **key/value pairs**.
@@ -44,6 +43,37 @@
 - It stores metrics in memory and local disk in an own custom, efficient format
 - It is written in Go.
 - Many client libraries and integrations available.
+
+<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
+<br />
+
+- All data is stored as time series.
+- Every time series is identified by the **metric name**
+  and a set of **key-value pairs**, called **labels**.
+
+- Metric: `go_memstats_alloc_bytes`
+- Labels:
+
+  - `instance="localhost:9100"`
+  - `job="node_exporter"`
+
+  - `instance="localhost:9090"`
+  - `job="prometheus"`
+
+<br />
+<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="820"></div>
+
+- The time series data also consists of the **actual data**, called **Samples**:
+
+  - It can be a **float64** value
+  - or a **millisecond-precision timestamp**
+
+- The notation of time series is often using this **notation**:
+
+  - `<metric name>{<label name>=<label value>,...}`
+
+- For example:
+  - `node_boot_time_seconds{instance="localhost:9100",job="node_exporter"}`
 
 ## Collecting Metrics
 
@@ -79,39 +109,6 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 - Various support tools.
 
 Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
-
-## Basic Concepts
-
-<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
-<br />
-
-- All data is stored as time series.
-- Every time series is identified by the **metric name**
-  and a set of **key-value pairs**, called **labels**.
-
-- Metric: `go_memstats_alloc_bytes`
-- Labels:
-
-  - `instance="localhost:9100"`
-  - `job="node_exporter"`
-
-  - `instance="localhost:9090"`
-  - `job="prometheus"`
-
-<br />
-<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="820"></div>
-
-- The time series data also consists of the **actual data**, called **Samples**:
-
-  - It can be a **float64** value
-  - or a **millisecond-precision timestamp**
-
-- The notation of time series is often using this **notation**:
-
-  - `<metric name>{<label name>=<label value>,...}`
-
-- For example:
-  - `node_boot_time_seconds{instance="localhost:9100",job="node_exporter"}`
 
 ## References
 
