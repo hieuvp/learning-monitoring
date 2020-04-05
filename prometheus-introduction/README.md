@@ -20,7 +20,7 @@
 ## Main Features
 
 - A multi-dimensional data model with time series data
-  identified by metric name and key/value pairs.
+  identified by **metric name** and **key/value pairs**.
 
   | Metric Name |      Label       | Sample |
   | :---------: | :--------------: | :----: |
