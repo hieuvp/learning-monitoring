@@ -31,7 +31,6 @@
 - It is inspired by Google's Borgmon,
   which uses time-series data as a datasource,
   to then send alerts based on this data.
-- It fits very well in the cloud native infrastructure.
 
 - Visualizations can be shown using a built-in expression browser
   or with integrations like Grafana.
