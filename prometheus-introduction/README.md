@@ -43,8 +43,6 @@
 - A **float64 value**.
 - A **millisecond-precision timestamp**.
 
-<br />
-
 ## Collecting Metrics
 
 > Time series collection happens via a **pull model** over **HTTP**.
