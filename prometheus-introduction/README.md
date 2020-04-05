@@ -47,7 +47,7 @@
 > Time series collection happens via a **pull model** over **HTTP**.
 
 <div align="center">
-  <img src="assets/collecting-metrics.png" width="550">
+  <img src="assets/collecting-metrics.png" width="530">
   <br />
   <em>
     Prometheus collects metrics from monitored targets
