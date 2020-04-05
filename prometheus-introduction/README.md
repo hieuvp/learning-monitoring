@@ -50,8 +50,8 @@
   <img src="assets/collecting-metrics.png" width="550">
   <br />
   <em>
-    <strong>Prometheus</strong> collects metrics from monitored targets by
-    <strong>scraping metrics HTTP endpoints</strong>
+    Prometheus collects metrics from monitored targets
+    by scraping metrics HTTP endpoints
   </em>
   <br />
 </div>
