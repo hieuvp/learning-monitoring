@@ -18,25 +18,19 @@
 
 ## Basic Concepts
 
+> Prometheus fundamentally stores all data as **time series**.
+
 - A multi-dimensional data model with **time series data**
   identified by **metric name** and **key/value pairs** (called **labels**).
 
 - `PromQL` (**Prometheus Query Language**),
   a flexible query language to leverage this dimensionality.
 
-<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 <br />
+<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 
-- All data is stored as time series.
-
-- Metric name: `go_memstats_alloc_bytes`
-- Labels:
-
-  - `instance="localhost:9100"`
-  - `job="node_exporter"`
-
-  - `instance="localhost:9090"`
-  - `job="prometheus"`
+- **Metric name**: `go_memstats_alloc_bytes`.
+- **Labels**: `instance="localhost:9100"`, `job="node_exporter"`, `instance="localhost:9090"`, `job="prometheus"`.
 
 <br />
 <div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="820"></div>
