@@ -20,6 +20,8 @@
 
 > Prometheus fundamentally stores all data as **time series**.
 
+<br />
+
 - A multi-dimensional data model with **time series data**
   identified by **metric name** and **key/value pairs** (called **labels**).
 
