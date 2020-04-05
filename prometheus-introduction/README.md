@@ -28,7 +28,7 @@
 - `PromQL` (Prometheus Query Language),
   a flexible query language to leverage this dimensionality.
 - No reliance on distributed storage; single server nodes are autonomous.
-- Time series collection happens via a pull model over HTTP.
+
 - Pushing time series is supported via an intermediary gateway.
 - Targets are discovered via service discovery or static configuration.
 - Multiple modes of graphing and dashboarding support.
@@ -76,6 +76,8 @@
   - `node_boot_time_seconds{instance="localhost:9100",job="node_exporter"}`
 
 ## Collecting Metrics
+
+> Time series collection happens via a **pull model** over **HTTP**.
 
 <div align="center">
   <img src="assets/collecting-metrics.png" width="550">
