@@ -30,6 +30,7 @@
 
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 
+- **Notation**: `<metric name>{<label name>=<label value>, ...}`
 - **Metric name**: `go_memstats_alloc_bytes`.
 - **Labels**: `instance="localhost:9100"`, `job="node_exporter"`, `instance="localhost:9090"`, `job="prometheus"`.
 
@@ -43,9 +44,6 @@
 - A **millisecond-precision timestamp**.
 
 <br />
-
-- **Notation**: `<metric name>{<label name>=<label value>, ...}`
-- For example: `node_boot_time_seconds{instance="localhost:9100",job="node_exporter"}`
 
 ## Collecting Metrics
 
