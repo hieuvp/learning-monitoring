@@ -52,7 +52,7 @@
   <br />
   <em>
     Prometheus collects metrics from monitored targets
-    by scraping metrics HTTP endpoints
+    by scraping /metrics HTTP endpoints
   </em>
   <br />
 </div>
