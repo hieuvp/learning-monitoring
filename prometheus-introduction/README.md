@@ -28,8 +28,6 @@
 - `PromQL` (Prometheus Query Language),
   a flexible query language to leverage this dimensionality.
 
-- Use time-series data as a datasource, to then send alerts based on this data.
-
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 <br />
 
@@ -95,6 +93,8 @@
 - Visualizations can be shown using a built-in expression browser
   or with integrations like Grafana.
 - It stores metrics in memory and local disk in an own custom, efficient format.
+
+- Use time-series data as a datasource, to then send alerts based on this data.
 
 The Prometheus ecosystem consists of multiple components, many of which are optional:
 
