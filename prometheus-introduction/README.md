@@ -36,7 +36,7 @@
 <br />
 
 <div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="810"></div>
-<div align="center"><img src="assets/console-time-picker.png" width="550"></div>
+<div align="center"><img src="assets/console-time-picker.png" width="680"></div>
 
 **Samples** form the actual time series data. Each **sample** consists of:
 
