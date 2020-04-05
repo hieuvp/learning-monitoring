@@ -35,12 +35,12 @@
 
 <br />
 
-<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="820"></div>
+<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="810"></div>
 
 **Samples** form the actual time series data. Each **sample** consists of:
 
-- A **float64 value**.
-- A **millisecond-precision timestamp**.
+1. A **float64 value**.
+1. A **millisecond-precision timestamp**.
 
 ## Collecting Metrics
 
