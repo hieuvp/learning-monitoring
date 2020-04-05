@@ -32,10 +32,6 @@
   which uses time-series data as a datasource,
   to then send alerts based on this data.
 
-- Visualizations can be shown using a built-in expression browser
-  or with integrations like Grafana.
-- It stores metrics in memory and local disk in an own custom, efficient format
-
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
 <br />
 
@@ -97,6 +93,10 @@
 - Pushing time series is supported via an intermediary gateway.
 - Targets are discovered via service discovery or static configuration.
 - Multiple modes of graphing and dashboarding support.
+
+- Visualizations can be shown using a built-in expression browser
+  or with integrations like Grafana.
+- It stores metrics in memory and local disk in an own custom, efficient format.
 
 The Prometheus ecosystem consists of multiple components, many of which are optional:
 
