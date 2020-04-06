@@ -107,8 +107,8 @@
 - **Client Libraries** for instrumenting application code.
 - Special-purpose **Exporters** for services like HAProxy, StatsD, Graphite, etc.
 
-- Prometheus is written in Go.
-- Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
+- Prometheus and most Prometheus components are written in Go,
+  making them easy to build and deploy as static binaries.
 
 ## References
 
