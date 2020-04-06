@@ -72,12 +72,8 @@
 - No reliance on distributed storage; single server nodes are autonomous.
 - Pushing time series is supported via an intermediary gateway.
 - Targets are discovered via service discovery or static configuration.
-- Multiple modes of graphing and dashboarding support.
 
-- Visualizations can be shown using a built-in expression browser
-  or with integrations like Grafana.
 - It stores metrics in memory and local disk in an own custom, efficient format.
-
 - Use time-series data as a datasource, to then send alerts based on this data.
 
 The Prometheus ecosystem consists of multiple components, many of which are optional:
@@ -91,9 +87,7 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 
 Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
 
-Prometheus
-
-- It is written in Go.
+- Prometheus is written in Go.
 - Many client libraries and integrations available.
 
 ## References
