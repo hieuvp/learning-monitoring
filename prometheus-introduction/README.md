@@ -74,18 +74,20 @@
 </div>
 <br />
 
-- No reliance on distributed storage; single server nodes are autonomous.
+- No reliance on distributed storage, single server nodes are autonomous.
+- It stores metrics in memory and local disk in an own custom, efficient format.
+
 - Pushing time series is supported via an intermediary gateway.
+- A **Push Gateway** for supporting **Short-lived Jobs**.
+
 - Targets are discovered via service discovery or static configuration.
 
-- It stores metrics in memory and local disk in an own custom, efficient format.
+- An **Alert Manager** to handle alerts.
 - Use time-series data as a datasource, to then send alerts based on this data.
 
 - The main **Prometheus Server** which scrapes and stores time series data.
 - **Client Libraries** for instrumenting application code.
-- A **Push Gateway** for supporting **Short-lived Jobs**.
 - Special-purpose **Exporters** for services like HAProxy, StatsD, Graphite, etc.
-- An **Alert Manager** to handle alerts.
 
 - Prometheus is written in Go.
 - Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
