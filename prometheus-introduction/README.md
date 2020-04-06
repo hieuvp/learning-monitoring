@@ -11,10 +11,11 @@
 
 - [Basic Concepts](#basic-concepts)
 - [Collecting Metrics](#collecting-metrics)
-- [Components and Architecture](#components-and-architecture)
+- [Architecture](#architecture)
   - [Storage](#storage)
-  - [Pushgateway](#pushgateway)
   - [Alertmanager](#alertmanager)
+  - [Pushgateway](#pushgateway)
+  - [Other Components](#other-components)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -67,7 +68,7 @@
 - A **single Prometheus server** is able to
   ingest up to **one million samples per second** as several million time series.
 
-## Components and Architecture
+## Architecture
 
 <div align="center">
   <img src="assets/architecture.png" width="900">
@@ -75,7 +76,6 @@
   <em>Prometheus Ecosystem</em>
   <br />
 </div>
-<br />
 
 ### Storage
 
@@ -89,15 +89,17 @@
   Instead of trying to solve clustered storage in Prometheus itself,
   Prometheus has a set of interfaces that allow integrating with remote storage systems.
 
+### Alertmanager
+
+- An **Alert Manager** to handle alerts.
+- Use time-series data as a datasource, to then send alerts based on this data.
+
 ### Pushgateway
 
 - Pushing time series is supported via an intermediary gateway.
 - A **Push Gateway** for supporting **Short-lived Jobs**.
 
-### Alertmanager
-
-- An **Alert Manager** to handle alerts.
-- Use time-series data as a datasource, to then send alerts based on this data.
+### Other Components
 
 - Targets are discovered via service discovery or static configuration.
 
