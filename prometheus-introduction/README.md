@@ -66,7 +66,12 @@
 
 ## Components and Architecture
 
-<div align="center"><img src="assets/architecture.png" width="900"></div>
+<div align="center">
+  <img src="assets/architecture.png" width="900">
+  <br />
+  <em>Prometheus Ecosystem</em>
+  <br />
+</div>
 <br />
 
 - No reliance on distributed storage; single server nodes are autonomous.
@@ -76,19 +81,14 @@
 - It stores metrics in memory and local disk in an own custom, efficient format.
 - Use time-series data as a datasource, to then send alerts based on this data.
 
-The Prometheus ecosystem consists of multiple components, many of which are optional:
-
 - The main **Prometheus Server** which scrapes and stores time series data.
 - **Client Libraries** for instrumenting application code.
 - A **Push Gateway** for supporting **Short-lived Jobs**.
 - Special-purpose **Exporters** for services like HAProxy, StatsD, Graphite, etc.
 - An **Alert Manager** to handle alerts.
-- Various support tools.
-
-Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
 
 - Prometheus is written in Go.
-- Many client libraries and integrations available.
+- Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
 
 ## References
 
