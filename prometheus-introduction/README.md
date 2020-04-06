@@ -12,6 +12,7 @@
 - [Basic Concepts](#basic-concepts)
 - [Collecting Metrics](#collecting-metrics)
 - [Components and Architecture](#components-and-architecture)
+  - [Storage](#storage)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -74,8 +75,17 @@
 </div>
 <br />
 
+### Storage
+
+- Prometheus includes a **local on-disk** time series database,
+  but also optionally integrates with **remote storage** systems.
 - No reliance on distributed storage, single server nodes are autonomous.
-- It stores metrics in memory and local disk in an own custom, efficient format.
+- It stores metrics in memory and local on-disk in an own custom, efficient format.
+
+- Prometheus's local time series database stores time series data in a custom format on disk.
+- Prometheus's local storage is limited by single nodes in its scalability and durability.
+  Instead of trying to solve clustered storage in Prometheus itself,
+  Prometheus has a set of interfaces that allow integrating with remote storage systems.
 
 - Pushing time series is supported via an intermediary gateway.
 - A **Push Gateway** for supporting **Short-lived Jobs**.
