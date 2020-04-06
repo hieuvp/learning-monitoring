@@ -62,7 +62,7 @@
   the **monitoring data itself is used**.
 - **Scraping endpoints** is much more efficient than other mechanisms (e.g. 3rd-party agents).
 - A **single Prometheus server** is able to
-  ingest up to one million samples per second as several million time series.
+  ingest up to **one million samples per second** as several million time series.
 
 ## Components and Architecture
 
