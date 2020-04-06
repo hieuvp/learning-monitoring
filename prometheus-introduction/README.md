@@ -13,6 +13,8 @@
 - [Collecting Metrics](#collecting-metrics)
 - [Components and Architecture](#components-and-architecture)
   - [Storage](#storage)
+  - [Pushgateway](#pushgateway)
+  - [Alertmanager](#alertmanager)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -87,13 +89,17 @@
   Instead of trying to solve clustered storage in Prometheus itself,
   Prometheus has a set of interfaces that allow integrating with remote storage systems.
 
+### Pushgateway
+
 - Pushing time series is supported via an intermediary gateway.
 - A **Push Gateway** for supporting **Short-lived Jobs**.
 
-- Targets are discovered via service discovery or static configuration.
+### Alertmanager
 
 - An **Alert Manager** to handle alerts.
 - Use time-series data as a datasource, to then send alerts based on this data.
+
+- Targets are discovered via service discovery or static configuration.
 
 - The main **Prometheus Server** which scrapes and stores time series data.
 - **Client Libraries** for instrumenting application code.
