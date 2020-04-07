@@ -77,6 +77,9 @@
   <br />
 </div>
 
+- Prometheus and most of its components are written in **Go**.
+- Targets are discovered via **service discovery** or **static configuration**.
+
 ### Storage
 
 - It stores metrics in memory and local on-disk in an own custom, efficient format.
@@ -98,14 +101,9 @@
 
 ### Other Components
 
-- Targets are discovered via service discovery or static configuration.
-
 - The main **Prometheus Server** which scrapes and stores time series data.
 - **Client Libraries** for instrumenting application code.
 - Special-purpose **Exporters** for services like HAProxy, StatsD, Graphite, etc.
-
-- Prometheus and most of its components are written in Go,
-  making them easy to build and deploy as static binaries.
 
 ## References
 
