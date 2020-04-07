@@ -12,7 +12,7 @@
 - [Basic Concepts](#basic-concepts)
 - [Collecting Metrics](#collecting-metrics)
 - [Architecture](#architecture)
-  - [Storage](#storage)
+  - [Prometheus Storage](#prometheus-storage)
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
   - [Other Components](#other-components)
@@ -76,11 +76,12 @@
   <em>Prometheus and Its Ecosystem Components</em>
   <br />
 </div>
+<br />
 
 - Prometheus and most of its components are written in **Go**.
 - Targets are discovered via **service discovery** or **static configuration**.
 
-### Storage
+### Prometheus Storage
 
 - It stores metrics in memory and local on-disk in an own custom, efficient format.
 
@@ -91,13 +92,21 @@
 
 ### Alertmanager
 
-- An **Alert Manager** to handle alerts.
-- Use time-series data as a datasource, to then send alerts based on this data.
+The [Alertmanager](https://github.com/prometheus/alertmanager)
+handles alerts sent by client applications such as the Prometheus server.
+It takes care of deduplicating, grouping, and routing them
+to the correct receiver integrations (e.g. Email, PagerDuty,...).
+It also takes care of silencing and inhibition of alerts.
 
 ### Pushgateway
 
-- Pushing time series is supported via an intermediary gateway.
-- A **Push Gateway** for supporting **Short-lived Jobs**.
+> The Pushgateway is not capable of turning Prometheus into a push-based monitoring system.
+
+The [Pushgateway](https://github.com/prometheus/pushgateway)
+exists to allow ephemeral and batch jobs to expose their metrics to Prometheus.
+Since these kinds of jobs may not exist long enough to be scraped,
+they can instead push their metrics to a Pushgateway.
+The Pushgateway then exposes these metrics to Prometheus.
 
 ### Other Components
 
