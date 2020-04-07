@@ -65,5 +65,5 @@
 
 ## References
 
-- [Prometheus Overview](https://prometheus.io/docs/introduction/overview/)
+- [Prometheus Introduction](https://prometheus.io/docs/introduction/overview/)
 - [Exposing and Collecting Metrics](https://blog.pvincent.io/2017/12/prometheus-blog-series-part-3-exposing-and-collecting-metrics/)
