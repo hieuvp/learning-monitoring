@@ -79,13 +79,12 @@
 
 ### Storage
 
-- No reliance on distributed storage, single server nodes are autonomous.
 - It stores metrics in memory and local on-disk in an own custom, efficient format.
 
-- Prometheus's local time series database stores time series data in a custom format on disk.
+- Prometheus's local time series database stores time series data in a custom format **on disk**.
 - Prometheus's local storage is limited by single nodes in its scalability and durability.
   Instead of trying to solve clustered storage in Prometheus itself,
-  Prometheus has a set of interfaces that allow integrating with remote storage systems.
+  Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
 
 ### Alertmanager
 
@@ -105,7 +104,7 @@
 - **Client Libraries** for instrumenting application code.
 - Special-purpose **Exporters** for services like HAProxy, StatsD, Graphite, etc.
 
-- Prometheus and most Prometheus components are written in Go,
+- Prometheus and most of its components are written in Go,
   making them easy to build and deploy as static binaries.
 
 ## References
