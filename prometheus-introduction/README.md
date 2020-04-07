@@ -11,6 +11,10 @@
 
 - [Basic Concepts](#basic-concepts)
 - [Collecting Metrics](#collecting-metrics)
+- [Architecture](#architecture)
+  - [Prometheus Storage](#prometheus-storage)
+  - [Alertmanager](#alertmanager)
+  - [Pushgateway](#pushgateway)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -28,7 +32,6 @@
 
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="895"></div>
 
->>>>>>> master
 - **Notation**: `<metric name>{<label name>=<label value>, ...}`.
 - **Metric name**: `go_memstats_alloc_bytes`.
 - **Labels**: `instance="localhost:9100"`, `job="node_exporter"`, `instance="localhost:9090"`, `job="prometheus"`.
@@ -42,7 +45,6 @@
 
 1. A **float64 value**.
 1. A **millisecond-precision timestamp**.
-<<<<<<< HEAD
 
 ## Collecting Metrics
 
@@ -108,32 +110,5 @@
 
 ## References
 
-- [Prometheus Overview](https://prometheus.io/docs/introduction/overview/)
-=======
-
-## Collecting Metrics
-
-> Time series collection happens via a **pull model** over **HTTP**.
-
-<div align="center">
-  <img src="assets/collecting-metrics.png" width="530">
-  <br />
-  <em>
-    Prometheus collects metrics from monitored targets
-    by scraping /metrics HTTP endpoints
-  </em>
-  <br />
-</div>
-<br />
-
-- **Rather than using custom scripts** that check on particular services and systems,
-  the **monitoring data itself is used**.
-- **Scraping endpoints** is much more efficient than other mechanisms (e.g. 3rd-party agents).
-- A **single Prometheus server** is able to
-  ingest up to **one million samples per second** as several million time series.
-
-## References
-
 - [Prometheus Introduction](https://prometheus.io/docs/introduction/overview/)
->>>>>>> master
 - [Exposing and Collecting Metrics](https://blog.pvincent.io/2017/12/prometheus-blog-series-part-3-exposing-and-collecting-metrics/)
