@@ -1,42 +1,114 @@
 # Prometheus Introduction
 
+> Prometheus collects metrics from configured targets at given intervals,
+> evaluates rule expressions, displays the results,
+> and can trigger alerts if some condition is observed to be true.
+
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Introduction to Prometheus](#introduction-to-prometheus)
-- [Prometheus Installation](#prometheus-installation)
-- [Demo: Prometheus Installation](#demo-prometheus-installation)
-- [Demo: Grafana with Prometheus Installation](#demo-grafana-with-prometheus-installation)
 - [Basic Concepts](#basic-concepts)
-- [Prometheus Configuration](#prometheus-configuration)
-- [Demo: Prometheus Config file](#demo-prometheus-config-file)
-- [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
-- [Demo: node exporter for Linux](#demo-node-exporter-for-linux)
-- [Node Exporter for Windows (WMI Exporter)](#node-exporter-for-windows-wmi-exporter)
-- [Prometheus Architecture](#prometheus-architecture)
+- [Collecting Metrics](#collecting-metrics)
+- [Architecture](#architecture)
+  - [Prometheus Storage](#prometheus-storage)
+  - [Alertmanager](#alertmanager)
+  - [Pushgateway](#pushgateway)
+- [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Introduction to Prometheus
-
-## Prometheus Installation
-
-## Demo: Prometheus Installation
-
-## Demo: Grafana with Prometheus Installation
-
 ## Basic Concepts
 
-## Prometheus Configuration
+> Prometheus fundamentally stores all data as **time series**.
 
-## Demo: Prometheus Config file
+1. A multi-dimensional data model with **time series data**
+   identified by **metric name** and **key/value pairs** (called **labels**).
+1. `PromQL` (**Prometheus Query Language**),
+   a flexible query language to leverage this dimensionality.
 
-## Monitoring Nodes (Servers) with Prometheus
+<br />
 
-## Demo: node exporter for Linux
+<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="895"></div>
 
-## Node Exporter for Windows (WMI Exporter)
+- **Notation**: `<metric name>{<label name>=<label value>, ...}`.
+- **Metric name**: `go_memstats_alloc_bytes`.
+- **Labels**: `instance="localhost:9100"`, `job="node_exporter"`, `instance="localhost:9090"`, `job="prometheus"`.
 
-## Prometheus Architecture
+<br />
+
+<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="810"></div>
+<div align="center"><img src="assets/console-time-picker.png" width="680"></div>
+
+**Samples** form the actual time series data. Each **sample** consists of:
+
+1. A **float64 value**.
+1. A **millisecond-precision timestamp**.
+
+## Collecting Metrics
+
+> Time series collection happens via a **pull model** over **HTTP**.
+
+<div align="center">
+  <img src="assets/collecting-metrics.png" width="530">
+  <br />
+  <em>
+    Prometheus collects metrics from monitored targets
+    by scraping /metrics HTTP endpoints
+  </em>
+  <br />
+</div>
+<br />
+
+- **Rather than using custom scripts** that check on particular services and systems,
+  the **monitoring data itself is used**.
+- **Scraping endpoints** is much more efficient than other mechanisms (e.g. 3rd-party agents).
+- A **single Prometheus server** is able to
+  ingest up to **one million samples per second** as several million time series.
+
+## Architecture
+
+<div align="center">
+  <img src="assets/architecture.png" width="900">
+  <br />
+  <em>Prometheus and Its Ecosystem Components</em>
+  <br />
+</div>
+<br />
+
+- Prometheus and most of its components are written in **Go**.
+- The main **Prometheus Server** which scrapes and stores time series data.
+- **Client Libraries** for instrumenting application code.
+- Targets are discovered via **Service Discovery** or **Static Configuration**.
+
+### Prometheus Storage
+
+- It stores metrics in memory and local on-disk in an own custom, efficient format.
+
+- Local time series database stores time series data in a custom format **on disk**.
+- Local storage is limited by single nodes in its scalability and durability.
+  Instead of trying to solve clustered storage in Prometheus itself,
+  Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
+
+### Alertmanager
+
+- The [Alertmanager](https://github.com/prometheus/alertmanager)
+  handles alerts sent by the Prometheus server.
+- It takes care of deduplicating, grouping, and routing them
+  to the correct receiver integrations (e.g. Email, PagerDuty,...).
+- It also takes care of silencing and inhibition of alerts.
+
+### Pushgateway
+
+- The [Pushgateway](https://github.com/prometheus/pushgateway)
+  exists to allow ephemeral and batch jobs to expose their metrics to Prometheus.
+- Since these kinds of jobs may not exist long enough to be scraped,
+  they can instead push their metrics to a Pushgateway.
+- The Pushgateway then exposes these metrics to Prometheus.
+- The Pushgateway is not capable of turning Prometheus into a push-based monitoring system.
+
+## References
+
+- [Prometheus Overview](https://prometheus.io/docs/introduction/overview/)
+- [Exposing and Collecting Metrics](https://blog.pvincent.io/2017/12/prometheus-blog-series-part-3-exposing-and-collecting-metrics/)
