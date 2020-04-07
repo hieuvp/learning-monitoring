@@ -10,12 +10,14 @@ set -x
 cd "/home/${USERNAME}"
 pwd
 
-## Core Development Tools
+## Development Tools
 yum -y update
 yum -y group install "Development Tools"
 
-## htop - Interactive Process Viewer
+## Core Tools
 yum -y install htop
+yum -y install jq
+yum -y install tree
 
 ## tree - List Contents of Directories in a Tree-like Format
 yum -y install tree
