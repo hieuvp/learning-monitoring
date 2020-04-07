@@ -1,3 +1,8 @@
+output "region" {
+  value       = local.region
+  description = "The region where the instance is hosted"
+}
+
 output "instance_id" {
   value       = aws_instance.this.id
   description = "The instance ID"
