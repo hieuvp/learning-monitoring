@@ -73,14 +73,12 @@
 <div align="center">
   <img src="assets/architecture.png" width="900">
   <br />
-  <em>Prometheus Ecosystem</em>
+  <em>Prometheus and Its Ecosystem Components</em>
   <br />
 </div>
 
 ### Storage
 
-- Prometheus includes a **local on-disk** time series database,
-  but also optionally integrates with **remote storage** systems.
 - No reliance on distributed storage, single server nodes are autonomous.
 - It stores metrics in memory and local on-disk in an own custom, efficient format.
 
