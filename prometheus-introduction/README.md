@@ -11,32 +11,11 @@
 
 - [Basic Concepts](#basic-concepts)
 - [Collecting Metrics](#collecting-metrics)
-<<<<<<< HEAD
-- [Architecture](#architecture)
-  - [Prometheus Storage](#prometheus-storage)
-  - [Alertmanager](#alertmanager)
-  - [Pushgateway](#pushgateway)
-=======
->>>>>>> master
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Basic Concepts
-<<<<<<< HEAD
-
-> Prometheus fundamentally stores all data as **time series**.
-
-1. A multi-dimensional data model with **time series data**
-   identified by **metric name** and **key/value pairs** (called **labels**).
-1. `PromQL` (**Prometheus Query Language**),
-   a flexible query language to leverage this dimensionality.
-
-<br />
-
-<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="895"></div>
-
-=======
 
 > Prometheus fundamentally stores all data as **time series**.
 
