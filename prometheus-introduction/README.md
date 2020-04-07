@@ -15,7 +15,6 @@
   - [Prometheus Storage](#prometheus-storage)
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
-  - [Other Components](#other-components)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -79,6 +78,8 @@
 <br />
 
 - Prometheus and most of its components are written in **Go**.
+- The main **Prometheus Server** which scrapes and stores time series data.
+- **Client libraries** for instrumenting application code.
 - Targets are discovered via **service discovery** or **static configuration**.
 
 ### Prometheus Storage
@@ -92,11 +93,11 @@
 
 ### Alertmanager
 
-The [Alertmanager](https://github.com/prometheus/alertmanager)
-handles alerts sent by client applications such as the Prometheus server.
-It takes care of deduplicating, grouping, and routing them
-to the correct receiver integrations (e.g. Email, PagerDuty,...).
-It also takes care of silencing and inhibition of alerts.
+- The [Alertmanager](https://github.com/prometheus/alertmanager)
+  handles alerts sent by the Prometheus server.
+- It takes care of deduplicating, grouping, and routing them
+  to the correct receiver integrations (e.g. Email, PagerDuty,...).
+- It also takes care of silencing and inhibition of alerts.
 
 ### Pushgateway
 
@@ -107,12 +108,6 @@ exists to allow ephemeral and batch jobs to expose their metrics to Prometheus.
 Since these kinds of jobs may not exist long enough to be scraped,
 they can instead push their metrics to a Pushgateway.
 The Pushgateway then exposes these metrics to Prometheus.
-
-### Other Components
-
-- The main **Prometheus Server** which scrapes and stores time series data.
-- **Client Libraries** for instrumenting application code.
-- Special-purpose **Exporters** for services like HAProxy, StatsD, Graphite, etc.
 
 ## References
 
