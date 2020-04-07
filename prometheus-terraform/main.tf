@@ -3,11 +3,6 @@ locals {
   environment = "Test"
 
   region        = "ap-southeast-1"
-<<<<<<< HEAD
-  ami           = "ami-0cbc6aae997c6538a" # Amazon Linux 2
-  username      = "ec2-user"
-=======
->>>>>>> master
   instance_type = "t2.micro"
   volume_size   = "20"                    # In gibibytes (GiB)
   ami           = "ami-0cbc6aae997c6538a" # Amazon Linux 2
@@ -42,18 +37,6 @@ resource "aws_instance" "this" {
   }
 
   user_data_base64 = filebase64("${path.root}/user-data.sh")
-
-  provisioner "file" {
-    source      = "~/.ssh/id_rsa"
-    destination = "/home/${local.username}/.ssh/id_rsa"
-  }
-
-  connection {
-    type        = "ssh"
-    host        = self.private_ip
-    user        = local.username
-    private_key = file(var.ssh_key_path)
-  }
 
   tags = {
     Name        = "${upper(local.environment)}-${lower(local.application)}"

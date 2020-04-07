@@ -1,10 +1,6 @@
 output "region" {
   value       = local.region
-<<<<<<< HEAD
-  description = "The region of the instance"
-=======
   description = "The region where the instance is hosted"
->>>>>>> master
 }
 
 output "instance_id" {

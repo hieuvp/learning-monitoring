@@ -19,12 +19,6 @@ yum -y install htop
 yum -y install jq
 yum -y install tree
 
-## tree - List Contents of Directories in a Tree-like Format
-yum -y install tree
-
-## jq - Lightweight and Flexible Command-line JSON Processor
-yum -y install jq
-
 ## Bash 5.0
 curl -O http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
 tar xf bash-5.0.tar.gz
