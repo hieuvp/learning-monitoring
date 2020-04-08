@@ -85,9 +85,7 @@
 
 ### Prometheus Storage
 
-- It stores metrics in memory and local on-disk in an own custom, efficient format.
-
-- Local time series database stores time series data in a custom format **on disk**.
+- Local time series database stores time series data in a custom format **on-disk**.
 - Local storage is limited by single nodes in its scalability and durability.
   Instead of trying to solve clustered storage in Prometheus itself,
   Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
