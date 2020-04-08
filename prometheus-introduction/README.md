@@ -78,6 +78,7 @@
 <br />
 
 - Prometheus and most of its components are written in **Go**.
+- **TSDB**: Time Series Database.
 - The main **Prometheus Server** which scrapes and stores time series data.
 - **Client Libraries** for instrumenting application code.
 - Targets are discovered via **Service Discovery** or **Static Configuration**.
