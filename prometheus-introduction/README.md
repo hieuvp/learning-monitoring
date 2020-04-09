@@ -92,18 +92,18 @@
 
 ### [Alertmanager](https://github.com/prometheus/alertmanager)
 
-- It handles alerts sent by the **Prometheus Server**.
+- The **Alertmanager** handles alerts sent by the **Prometheus Server**.
 - It takes care of deduplicating, grouping, and routing them
   to the correct receiver integrations (e.g. PagerDuty, Email,...).
 - It also takes care of silencing and inhibition of alerts.
 
 ### [Pushgateway](https://github.com/prometheus/pushgateway)
 
-- It exists to allow ephemeral and batch jobs to expose their metrics to Prometheus.
+- The **Pushgateway** exists to allow ephemeral and batch jobs to expose their metrics to Prometheus.
   Since these kinds of jobs may not exist long enough to be scraped,
   they can instead push their metrics to a **Pushgateway**.
 - The **Pushgateway** then exposes these metrics to Prometheus.
-- It is not capable of turning Prometheus into a push-based monitoring system.
+- The **Pushgateway** is not capable of turning Prometheus into a push-based monitoring system.
 
 ## References
 
