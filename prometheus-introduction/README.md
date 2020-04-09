@@ -78,8 +78,8 @@
 <br />
 
 - Prometheus and most of its components are written in **Go**.
-- **TSDB**: Time Series Database.
 - The main **Prometheus Server** which scrapes and stores time series data.
+- **TSDB**: Time Series Database.
 - **Client Libraries** for instrumenting application code.
 - Targets are discovered via **Service Discovery** or **Static Configuration**.
 
@@ -94,7 +94,7 @@
 
 - It handles alerts sent by the **Prometheus Server**.
 - It takes care of deduplicating, grouping, and routing them
-  to the correct receiver integrations (e.g. Email, PagerDuty,...).
+  to the correct receiver integrations (e.g. PagerDuty, Email,...).
 - It also takes care of silencing and inhibition of alerts.
 
 ### [Pushgateway](https://github.com/prometheus/pushgateway)
