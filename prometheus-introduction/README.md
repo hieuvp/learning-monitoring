@@ -72,7 +72,7 @@
 <div align="center">
   <img src="assets/architecture.png" width="900">
   <br />
-  <em>Prometheus and Its Ecosystem Components</em>
+  <em>Prometheus and Its Ecosystem</em>
   <br />
 </div>
 <br />
