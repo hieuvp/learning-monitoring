@@ -19,6 +19,7 @@
   - [`install-prometheus.sh`](#install-prometheussh)
   - [`install-grafana.sh`](#install-grafanash)
   - [`install-node-exporter.sh`](#install-node-exportersh)
+- [Configuration](#configuration)
 - [Prometheus Configuration](#prometheus-configuration)
 - [Demo: Prometheus Config file](#demo-prometheus-config-file)
 - [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
@@ -475,6 +476,8 @@ Add the following lines to /etc/prometheus/prometheus.yml:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## Configuration
 
 ## Prometheus Configuration
 
