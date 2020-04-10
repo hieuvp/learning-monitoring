@@ -16,9 +16,9 @@
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
 - [Installation](#installation)
-  - [install-prometheus.sh](#install-prometheussh)
-  - [install-grafana.sh](#install-grafanash)
-  - [install-node-exporter.sh](#install-node-exportersh)
+  - [`install-prometheus.sh`](#install-prometheussh)
+  - [`install-grafana.sh`](#install-grafanash)
+  - [`install-node-exporter.sh`](#install-node-exportersh)
 - [Prometheus Configuration](#prometheus-configuration)
 - [Demo: Prometheus Config file](#demo-prometheus-config-file)
 - [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
@@ -128,7 +128,7 @@ make prometheus-terraform-output
 - `systemctl`: control the `systemd` system and service manager.
 - `journalctl`: query the `systemd` journal.
 
-### install-prometheus.sh
+### `install-prometheus.sh`
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-prometheus.sh) -->
 <!-- The below code snippet is automatically added from labs/install-prometheus.sh -->
@@ -288,7 +288,7 @@ ps aux | grep prometheus
 
 - <http://prometheus.shopback.engineering:9090/graph>
 
-### install-grafana.sh
+### `install-grafana.sh`
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-grafana.sh) -->
 <!-- The below code snippet is automatically added from labs/install-grafana.sh -->
@@ -342,7 +342,7 @@ ps aux | grep grafana
 - <http://prometheus.shopback.engineering:3000/login>
   `admin`/`admin`
 
-### install-node-exporter.sh
+### `install-node-exporter.sh`
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-node-exporter.sh) -->
 <!-- The below code snippet is automatically added from labs/install-node-exporter.sh -->
