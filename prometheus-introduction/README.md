@@ -11,6 +11,10 @@
 
 - [Basic Concepts](#basic-concepts)
 - [Collecting Metrics](#collecting-metrics)
+- [Architecture](#architecture)
+  - [Prometheus Storage](#prometheus-storage)
+  - [Alertmanager](#alertmanager)
+  - [Pushgateway](#pushgateway)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -62,6 +66,44 @@
 - **Scraping endpoints** is much more efficient than other mechanisms (e.g. 3rd-party agents).
 - A **single Prometheus server** is able to
   ingest up to **one million samples per second** as several million time series.
+
+## Architecture
+
+<div align="center">
+  <img src="assets/architecture.png" width="900">
+  <br />
+  <em>Prometheus and Its Ecosystem</em>
+  <br />
+</div>
+<br />
+
+- Prometheus and most of its components are written in [**Go**](https://golang.org/).
+- The main **Prometheus Server** which scrapes and stores time series data.
+- **TSDB**: Time Series Database.
+- **Client Libraries** for instrumenting application code.
+- Targets are discovered via **Service Discovery** or **Static Configuration**.
+
+### Prometheus Storage
+
+- Local time series database stores time series data in a custom format **on-disk**.
+- Local storage is limited by single nodes in its scalability and durability.
+  Instead of trying to solve clustered storage in Prometheus itself,
+  Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
+
+### [Alertmanager](https://github.com/prometheus/alertmanager)
+
+- The **Alertmanager** handles alerts sent by the **Prometheus Server**.
+- It takes care of **deduplicating**, **grouping**, and **routing** them
+  to the correct receiver integrations (e.g. PagerDuty, Email,...).
+- It also takes care of **silencing** and **inhibition** of alerts.
+
+### [Pushgateway](https://github.com/prometheus/pushgateway)
+
+- The **Pushgateway** exists to allow ephemeral and batch jobs to expose their metrics to Prometheus.
+  Since these kinds of jobs may not exist long enough to be scraped,
+  they can instead push their metrics to a **Pushgateway**.
+- The **Pushgateway** then exposes these metrics to Prometheus.
+- The **Pushgateway** is not capable of turning Prometheus into a **~~push-based~~** monitoring system.
 
 ## References
 
