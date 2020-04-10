@@ -19,8 +19,6 @@
   - [install-prometheus.sh](#install-prometheussh)
   - [install-grafana.sh](#install-grafanash)
   - [install-node-exporter.sh](#install-node-exportersh)
-- [Prometheus Installation](#prometheus-installation)
-- [Grafana with Prometheus Installation](#grafana-with-prometheus-installation)
 - [Prometheus Configuration](#prometheus-configuration)
 - [Demo: Prometheus Config file](#demo-prometheus-config-file)
 - [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
@@ -118,14 +116,6 @@
 
 ## Installation
 
-### install-prometheus.sh
-
-### install-grafana.sh
-
-### install-node-exporter.sh
-
-## Prometheus Installation
-
 ```shell script
 make prometheus-terraform-plan
 make prometheus-terraform-apply
@@ -137,6 +127,8 @@ make prometheus-terraform-output
 - `ps`: information about running processes.
 - `systemctl`: control the `systemd` system and service manager.
 - `journalctl`: query the `systemd` journal.
+
+### install-prometheus.sh
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-prometheus.sh) -->
 <!-- The below code snippet is automatically added from labs/install-prometheus.sh -->
@@ -296,9 +288,7 @@ ps aux | grep prometheus
 
 - <http://prometheus.shopback.engineering:9090/graph>
 
-``
-
-## Grafana with Prometheus Installation
+### install-grafana.sh
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-grafana.sh) -->
 <!-- The below code snippet is automatically added from labs/install-grafana.sh -->
@@ -352,86 +342,7 @@ ps aux | grep grafana
 - <http://prometheus.shopback.engineering:3000/login>
   `admin`/`admin`
 
-## Prometheus Configuration
-
-- The configuration is stored in the Prometheus configuration file, in yaml format.
-- The configuration file can be changed and applied, without having to restart Prometheus.
-
-- A reload can be done by executing:
-
-```shell script
-kill -SIGHUP <pid>
-```
-
-- You can also pass parameters (flags) at **startup time** to `./prometheus`
-- Those parameters cannot be changed without restarting Prometheus.
-- The configuration file is passed using the flag `--config.file`
-
-- The default configuration looks like this:
-
-<!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/prometheus.yml) -->
-<!-- The below code snippet is automatically added from labs/prometheus.yml -->
-
-```yml
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-        # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-# - "first_rules.yml"
-# - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["localhost:9090"]
-```
-
-<!-- AUTO-GENERATED-CONTENT:END -->
-
-- To scape metrics, you need to add a configuration to the prometheus config file
-
-- For example, to scape metrics from prometheus itself, the following code block is added by default.
-
-## Demo: Prometheus Config file
-
-```shell script
-ps aux | grep prometheus
-```
-
-- <http://prometheus.shopback.engineering:9090/targets>
-- <http://prometheus.shopback.engineering:9090/metrics>
-- <http://prometheus.shopback.engineering:9090/config>
-
-## Monitoring Nodes (Servers) with Prometheus
-
-- To monitor nodes, you need to install the node-exporter
-- The node exporter will expose machine metrics of Linux / \*Nix machines
-- For example: CPU Usage, Memory Usage
-
-- The node exporter can be used to monitor machines, and later on,
-  you can create alerts based on these ingested metrics.
-
-- For Windows, there's a WMI exporter (see <https://github.com/martinlindhe/wmi_exporter)>
-
-## Demo: node exporter for Linux
+### install-node-exporter.sh
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-node-exporter.sh) -->
 <!-- The below code snippet is automatically added from labs/install-node-exporter.sh -->
@@ -564,6 +475,87 @@ Add the following lines to /etc/prometheus/prometheus.yml:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## Prometheus Configuration
+
+- The configuration is stored in the Prometheus configuration file, in yaml format.
+- The configuration file can be changed and applied, without having to restart Prometheus.
+
+- A reload can be done by executing:
+
+```shell script
+kill -SIGHUP <pid>
+```
+
+- You can also pass parameters (flags) at **startup time** to `./prometheus`
+- Those parameters cannot be changed without restarting Prometheus.
+- The configuration file is passed using the flag `--config.file`
+
+- The default configuration looks like this:
+
+<!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/prometheus.yml) -->
+<!-- The below code snippet is automatically added from labs/prometheus.yml -->
+
+```yml
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+        # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+# - "first_rules.yml"
+# - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["localhost:9090"]
+```
+
+<!-- AUTO-GENERATED-CONTENT:END -->
+
+- To scape metrics, you need to add a configuration to the prometheus config file
+
+- For example, to scape metrics from prometheus itself, the following code block is added by default.
+
+## Demo: Prometheus Config file
+
+```shell script
+ps aux | grep prometheus
+```
+
+- <http://prometheus.shopback.engineering:9090/targets>
+- <http://prometheus.shopback.engineering:9090/metrics>
+- <http://prometheus.shopback.engineering:9090/config>
+
+## Monitoring Nodes (Servers) with Prometheus
+
+- To monitor nodes, you need to install the node-exporter
+- The node exporter will expose machine metrics of Linux / \*Nix machines
+- For example: CPU Usage, Memory Usage
+
+- The node exporter can be used to monitor machines, and later on,
+  you can create alerts based on these ingested metrics.
+
+- For Windows, there's a WMI exporter (see <https://github.com/martinlindhe/wmi_exporter)>
+
+## Demo: node exporter for Linux
 
 ```shell script
 sudo vi /etc/prometheus/prometheus.yml
