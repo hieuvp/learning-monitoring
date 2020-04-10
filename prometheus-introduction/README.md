@@ -24,7 +24,6 @@
 <br />
 
 <div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="895"></div>
->>>>>>> master
 
 - **Notation**: `<metric name>{<label name>=<label value>, ...}`.
 - **Metric name**: `go_memstats_alloc_bytes`.
@@ -39,39 +38,6 @@
 
 1. A **float64 value**.
 1. A **millisecond-precision timestamp**.
-
-<<<<<<< HEAD
-
-<div align="center"><img src="assets/graph-go-memstats-alloc-bytes.png" width="900"></div>
-<br />
-
-- All data is stored as time series.
-- Every time series is identified by the **metric name**
-  and a set of **key-value pairs**, called **labels**.
-
-- Metric: `go_memstats_alloc_bytes`
-- Labels:
-
-  - `instance="localhost:9100"`
-  - `job="node_exporter"`
-
-  - `instance="localhost:9090"`
-  - `job="prometheus"`
-
-<br />
-<div align="center"><img src="assets/console-go-memstats-alloc-bytes.png" width="820"></div>
-
-- The time series data also consists of the **actual data**, called **Samples**:
-
-  - It can be a **float64** value
-  - or a **millisecond-precision timestamp**
-
-- The notation of time series is often using this **notation**:
-
-  - `<metric name>{<label name>=<label value>,...}`
-
-- For example:
-  - `node_boot_time_seconds{instance="localhost:9100",job="node_exporter"}`
 
 ## Prometheus Installation
 
