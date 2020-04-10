@@ -103,7 +103,7 @@
   Since these kinds of jobs may not exist long enough to be scraped,
   they can instead push their metrics to a **Pushgateway**.
 - The **Pushgateway** then exposes these metrics to Prometheus.
-- The **Pushgateway** is not capable of turning Prometheus into a push-based monitoring system.
+- The **Pushgateway** is not capable of turning Prometheus into a **~~push-based~~** monitoring system.
 
 ## References
 
