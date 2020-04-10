@@ -15,6 +15,10 @@
   - [Prometheus Storage](#prometheus-storage)
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
+- [Installation](#installation)
+  - [install-prometheus.sh](#install-prometheussh)
+  - [install-grafana.sh](#install-grafanash)
+  - [install-node-exporter.sh](#install-node-exportersh)
 - [Prometheus Installation](#prometheus-installation)
 - [Grafana with Prometheus Installation](#grafana-with-prometheus-installation)
 - [Prometheus Configuration](#prometheus-configuration)
@@ -111,6 +115,14 @@
   they can instead push their metrics to a **Pushgateway**.
 - The **Pushgateway** then exposes these metrics to Prometheus.
 - The **Pushgateway** is not capable of turning Prometheus into a **~~push-based~~** monitoring system.
+
+## Installation
+
+### install-prometheus.sh
+
+### install-grafana.sh
+
+### install-node-exporter.sh
 
 ## Prometheus Installation
 
