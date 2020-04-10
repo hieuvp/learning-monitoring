@@ -9,30 +9,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-<<<<<<< HEAD
-- [Main Features](#main-features)
-- [Collecting Metrics](#collecting-metrics)
-- [Components and Architecture](#components-and-architecture)
-- [Basic Concepts](#basic-concepts)
-- [Prometheus Installation](#prometheus-installation)
-- [Grafana with Prometheus Installation](#grafana-with-prometheus-installation)
-- [Prometheus Configuration](#prometheus-configuration)
-- [Demo: Prometheus Config file](#demo-prometheus-config-file)
-- [Monitoring Nodes (Servers) with Prometheus](#monitoring-nodes-servers-with-prometheus)
-- [Demo: node exporter for Linux](#demo-node-exporter-for-linux)
-- [Node Exporter for Windows (WMI Exporter)](#node-exporter-for-windows-wmi-exporter)
-=======
-- [Basic Concepts](#basic-concepts)
-- [Collecting Metrics](#collecting-metrics)
-<<<<<<< HEAD
->>>>>>> master
-=======
-- [Architecture](#architecture)
-  - [Prometheus Storage](#prometheus-storage)
-  - [Alertmanager](#alertmanager)
-  - [Pushgateway](#pushgateway)
->>>>>>> master
-- [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
