@@ -24,12 +24,6 @@
 - [Node Exporter](https://github.com/prometheus/node_exporter)
   is a Prometheus exporter for hardware and OS metrics exposed by `*NIX` kernels.
 
-- [Alertmanager](https://github.com/prometheus/alertmanager)
-  handles alerts sent by client applications such as the Prometheus server.
-  It takes care of deduplicating, grouping, and routing them
-  to the correct receiver integrations (e.g. Email, PagerDuty,...).
-  It also takes care of silencing and inhibition of alerts.
-
 <br />
 
 1. [Introduction](prometheus-introduction/README.md)
