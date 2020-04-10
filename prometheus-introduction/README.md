@@ -93,9 +93,9 @@
 ### [Alertmanager](https://github.com/prometheus/alertmanager)
 
 - The **Alertmanager** handles alerts sent by the **Prometheus Server**.
-- It takes care of deduplicating, grouping, and routing them
+- It takes care of **deduplicating**, **grouping**, and **routing** them
   to the correct receiver integrations (e.g. PagerDuty, Email,...).
-- It also takes care of silencing and inhibition of alerts.
+- It also takes care of **silencing** and **inhibition** of alerts.
 
 ### [Pushgateway](https://github.com/prometheus/pushgateway)
 
