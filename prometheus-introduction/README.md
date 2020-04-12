@@ -103,8 +103,12 @@
 
 ### Exporters
 
+<div align="center"><img src="assets/exporters.png" width="900"></div>
+
 - [Node Exporter](https://github.com/prometheus/node_exporter)
   is a Prometheus exporter for hardware and OS metrics exposed by `*NIX` kernels.
+
+- [WMI Exporter](https://github.com/martinlindhe/wmi_exporter)
 
 ### [Alertmanager](https://github.com/prometheus/alertmanager)
 
