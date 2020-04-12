@@ -101,7 +101,12 @@
   Instead of trying to solve clustered storage in Prometheus itself,
   Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
 
-### Exporters
+### [Exporters](https://prometheus.io/docs/instrumenting/exporters)
+
+> There are a number of libraries and servers which help in
+> exporting existing metrics from third-party systems as Prometheus metrics.
+> This is useful for cases where it is not feasible
+> to instrument a given system with Prometheus metrics directly (e.g. HAProxy or Linux system stats).
 
 <div align="center"><img src="assets/exporters.png" width="900"></div>
 
@@ -109,6 +114,10 @@
   is a Prometheus exporter for hardware and OS metrics exposed by `*NIX` kernels.
 
 - [WMI Exporter](https://github.com/martinlindhe/wmi_exporter)
+  Prometheus exporter for Windows machines, using the WMI (Windows Management Instrumentation).
+
+- [Consul Exporter](https://github.com/prometheus/consul_exporter)
+  Export Consul service health to Prometheus.
 
 ### [Alertmanager](https://github.com/prometheus/alertmanager)
 
