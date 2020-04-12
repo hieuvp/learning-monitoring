@@ -13,6 +13,7 @@
 - [Collecting Metrics](#collecting-metrics)
 - [Architecture](#architecture)
   - [Prometheus Storage](#prometheus-storage)
+  - [Exporters](#exporters)
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
 - [Installation](#installation)
@@ -99,6 +100,11 @@
 - Local storage is limited by single nodes in its scalability and durability.
   Instead of trying to solve clustered storage in Prometheus itself,
   Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
+
+### Exporters
+
+- [Node Exporter](https://github.com/prometheus/node_exporter)
+  is a Prometheus exporter for hardware and OS metrics exposed by `*NIX` kernels.
 
 ### [Alertmanager](https://github.com/prometheus/alertmanager)
 
@@ -346,6 +352,13 @@ ps aux | grep grafana
 
 - <http://prometheus.shopback.engineering:3000/login>
   `admin`/`admin`
+
+Demo Grafana
+
+1. Add Data Source, Prometheus
+1. Create New Dashboard
+1. Query: `scrape_samples_scraped`
+1. Compare graph Prometheus vs Grafana
 
 ### `install-node-exporter.sh`
 
