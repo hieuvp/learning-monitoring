@@ -137,6 +137,44 @@ make prometheus-terraform-output
 
 - <https://ifconfig.co/>
 
+```console
+$ curl ifconfig.co
+14.169.154.204
+
+$ curl ifconfig.co/country
+Vietnam
+
+$ curl ifconfig.co/country-iso
+VN
+
+$ curl --silent ifconfig.co/json | jq
+{
+  "ip": "14.169.154.204",
+  "ip_decimal": 245996236,
+  "country": "Vietnam",
+  "country_eu": false,
+  "country_iso": "VN",
+  "hostname": "static.vnpt.vn",
+  "latitude": 16.0023,
+  "longitude": 105.9999,
+  "asn": "AS45899",
+  "asn_org": "VNPT Corp",
+  "user_agent": {
+    "product": "curl",
+    "version": "7.67.0",
+    "raw_value": "curl/7.67.0"
+  }
+}
+
+# Port testing
+$ curl --silent ifconfig.co/port/8080 | jq
+{
+  "ip": "14.169.154.204",
+  "port": 8080,
+  "reachable": false
+}
+```
+
 - `scrape_samples_scraped`
 
 ### `install-prometheus.sh`
