@@ -129,6 +129,10 @@ make prometheus-terraform-output
 - `systemctl`: control the `systemd` system and service manager.
 - `journalctl`: query the `systemd` journal.
 
+- <https://ifconfig.co/>
+
+- `scrape_samples_scraped`
+
 ### `install-prometheus.sh`
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=labs/install-prometheus.sh) -->
