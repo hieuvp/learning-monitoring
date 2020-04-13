@@ -16,7 +16,7 @@
   - [Exporters](#exporters)
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
-- [Installation](#installation)
+- [Installation Scripts](#installation-scripts)
   - [`install-prometheus.sh`](#install-prometheussh)
   - [`install-grafana.sh`](#install-grafanash)
   - [`install-node-exporter.sh`](#install-node-exportersh)
@@ -134,7 +134,7 @@
 - The **Pushgateway** then exposes these metrics to Prometheus.
 - The **Pushgateway** is not capable of turning Prometheus into a **~~push-based~~** monitoring system.
 
-## Installation
+## Installation Scripts
 
 ```shell script
 make prometheus-terraform-plan
