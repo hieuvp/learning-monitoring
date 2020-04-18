@@ -13,7 +13,7 @@
 - [Collecting Metrics](#collecting-metrics)
 - [Architecture](#architecture)
   - [Prometheus Storage](#prometheus-storage)
-  - [Exporters](#exporters)
+  - [Prometheus Exporters](#prometheus-exporters)
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
 - [References](#references)
@@ -91,7 +91,7 @@
   Instead of trying to solve clustered storage in Prometheus itself,
   Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
 
-### [Exporters](https://prometheus.io/docs/instrumenting/exporters)
+### [Prometheus Exporters](https://prometheus.io/docs/instrumenting/exporters)
 
 - There are a number of libraries and servers which help in
   exporting existing metrics from third-party systems as Prometheus metrics.
