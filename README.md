@@ -7,6 +7,7 @@
 
 - [Prometheus and Its Ecosystem](#prometheus-and-its-ecosystem)
 - [Additional Linux Topics](#additional-linux-topics)
+  - [Systemd](#systemd)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -31,8 +32,7 @@
 
 ## Additional Linux Topics
 
-### Mastering Systemd
-1. Systemd
+### Systemd
 
 ## References
 
