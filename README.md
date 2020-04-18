@@ -31,6 +31,7 @@
 
 ## Additional Linux Topics
 
+### Mastering Systemd
 1. Systemd
 
 ## References
@@ -38,4 +39,4 @@
 - [Monitoring and Alerting with Prometheus](https://www.udemy.com/course/monitoring-and-alerting-with-prometheus)
 - [Course Files for Monitoring and Alerting with Prometheus](https://github.com/in4it/prometheus-course)
 - [Managing Advanced Kubernetes Logging and Tracing](https://app.pluralsight.com/library/courses/managing-advanced-kubernetes-logging-tracing/table-of-contents)
-- [Mastering Systemd](https://linuxacademy.com/course/mastering-systemd/)
+- [Mastering Systemd](https://linuxacademy.com/cp/modules/view/id/171)
