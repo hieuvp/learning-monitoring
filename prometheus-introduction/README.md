@@ -139,8 +139,14 @@ make prometheus-terraform-output
 ```
 
 - `ps`: information about running processes.
+- `kill`: sends a signal to a process, usually related to stopping the process.
+  All signals except for `SIGKILL` and `SIGSTOP`
+  can be intercepted by the process to perform a clean exit.
 - `systemctl`: control the `systemd` system and service manager.
 - `journalctl`: query the `systemd` journal.
+
+- `wget` and `curl` and `http`.
+- `yum`, `yum repo`.
 
 - <https://ifconfig.co/>
 
