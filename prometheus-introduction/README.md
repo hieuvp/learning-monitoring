@@ -109,6 +109,7 @@
 > to instrument a given system with Prometheus metrics directly (e.g. HAProxy or Linux system stats).
 
 <div align="center"><img src="assets/exporters.png" width="900"></div>
+<br />
 
 - [**Node Exporter**](https://github.com/prometheus/node_exporter)
   is a **Prometheus Exporter** for hardware and OS metrics exposed by `*NIX` kernels.
