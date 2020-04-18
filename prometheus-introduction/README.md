@@ -99,7 +99,7 @@
 - [**Node Exporter**](https://github.com/prometheus/node_exporter)
   is a **Prometheus Exporter** for hardware and OS metrics exposed by `*NIX` kernels.
 - [**WMI Exporter**](https://github.com/martinlindhe/wmi_exporter)
-  is a **Prometheus Exporter** for Windows machines, using the WMI (Windows Management Instrumentation).
+  is a **Prometheus Exporter** for Windows machines, using the `WMI` (Windows Management Instrumentation).
 - [**Consul Exporter**](https://github.com/prometheus/consul_exporter)
   is a **Prometheus Exporter** for Consul metrics.
 
