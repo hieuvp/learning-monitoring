@@ -34,11 +34,11 @@
 
 ### Systemd
 
-1. [ ] Course Introduction
-1. [ ] Linux Daemon History
-1. [ ] `systemd` Components
-1. [ ] Containers with `systemd`
-1. [ ] Course Conclusion
+1. [ ] **Course Introduction**
+1. [ ] **Linux Daemon History**
+1. [ ] **`systemd` Components**
+1. [ ] **Containers with `systemd`**
+1. [ ] **Course Conclusion**
 
 ## References
 
