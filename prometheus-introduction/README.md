@@ -108,6 +108,7 @@
 > This is useful for cases where it is not feasible
 > to instrument a given system with Prometheus metrics directly (e.g. HAProxy or Linux system stats).
 
+<br />
 <div align="center"><img src="assets/exporters.png" width="900"></div>
 <br />
 
