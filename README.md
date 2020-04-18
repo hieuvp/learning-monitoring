@@ -6,6 +6,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Prometheus and Its Ecosystem](#prometheus-and-its-ecosystem)
+- [Additional Linux Topics](#additional-linux-topics)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -21,14 +22,14 @@
   is a tool that can combine data from many places into a single dashboard.
   It allows you to query, visualize and alert on metrics and logs no matter where they are stored.
 
-<br />
-
 1. [Introduction](prometheus-introduction/README.md)
 1. [ ] [Monitoring](prometheus-monitoring/README.md)
 1. [ ] [Alerting](prometheus-alerting/README.md)
 1. [ ] [Internals](prometheus-internals/README.md)
 1. [ ] [Use Cases](prometheus-use-cases/README.md)
 1. [ ] Thank You
+
+## Additional Linux Topics
 
 ## References
 
