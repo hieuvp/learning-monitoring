@@ -93,12 +93,6 @@
 
 ### [Prometheus Exporters](https://prometheus.io/docs/instrumenting/exporters)
 
-- There are a number of libraries and servers which help in
-  exporting existing metrics from third-party systems as Prometheus metrics.
-- This is useful for cases where it is not feasible
-  to instrument a given system with Prometheus metrics directly (e.g. HAProxy or Linux system stats).
-
-<br />
 <div align="center"><img src="assets/exporters.png" width="900"></div>
 <br />
 
