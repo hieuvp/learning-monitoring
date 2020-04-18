@@ -13,11 +13,7 @@
 - [Collecting Metrics](#collecting-metrics)
 - [Architecture](#architecture)
   - [Prometheus Storage](#prometheus-storage)
-<<<<<<< HEAD
-  - [Exporters](#exporters)
-=======
   - [Prometheus Exporters](#prometheus-exporters)
->>>>>>> master
   - [Alertmanager](#alertmanager)
   - [Pushgateway](#pushgateway)
 - [Install Scripts](#install-scripts)
@@ -105,30 +101,15 @@
   Instead of trying to solve clustered storage in Prometheus itself,
   Prometheus has a set of interfaces that allow integrating with **remote storage** systems.
 
-<<<<<<< HEAD
-### [Exporters](https://prometheus.io/docs/instrumenting/exporters)
-
-- There are a number of libraries and servers which help in
-  exporting existing metrics from third-party systems as Prometheus metrics.
-- This is useful for cases where it is not feasible
-  to instrument a given system with Prometheus metrics directly (e.g. HAProxy or Linux system stats).
-
-<br />
-=======
 ### [Prometheus Exporters](https://prometheus.io/docs/instrumenting/exporters)
 
->>>>>>> master
 <div align="center"><img src="assets/exporters.png" width="900"></div>
 <br />
 
 - [**Node Exporter**](https://github.com/prometheus/node_exporter)
   is a **Prometheus Exporter** for hardware and OS metrics exposed by `*NIX` kernels.
 - [**WMI Exporter**](https://github.com/martinlindhe/wmi_exporter)
-<<<<<<< HEAD
-  is a **Prometheus Exporter** for Windows machines, using the WMI (Windows Management Instrumentation).
-=======
   is a **Prometheus Exporter** for Windows machines, using the `WMI` (Windows Management Instrumentation).
->>>>>>> master
 - [**Consul Exporter**](https://github.com/prometheus/consul_exporter)
   is a **Prometheus Exporter** for Consul metrics.
 
