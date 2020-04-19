@@ -5,7 +5,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [systemd Tools](#systemd-tools)
+- [`systemd` Tools](#systemd-tools)
   - [`systemctl`](#systemctl)
   - [Introduction to the systemd Journal](#introduction-to-the-systemd-journal)
   - [`journalctl`](#journalctl)
@@ -22,7 +22,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## systemd Tools
+## `systemd` Tools
 
 ### `systemctl`
 
