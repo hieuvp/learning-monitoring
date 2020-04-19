@@ -35,8 +35,8 @@
 ### Systemd
 
 1. [ ] [**Introduction**](systemd-introduction/README.md)
-1. [ ] [**Components**](systemd-components/README.md)
-1. [ ] [**Containers**](systemd-containers/README.md)
+1. [ ] [**Systemd Components**](systemd-components/README.md)
+1. [ ] [**Containers with systemd**](systemd-containers/README.md)
 1. [ ] **Course Conclusion**
 
 ## References

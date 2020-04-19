@@ -11,7 +11,6 @@
 - [Hands-On Lab: Creating a Systemd Compatible CentOS 7 Container](#hands-on-lab-creating-a-systemd-compatible-centos-7-container)
 - [Hands-On Lab: Creating a Systemd Compatible Debian Container](#hands-on-lab-creating-a-systemd-compatible-debian-container)
 - [QUIZ: Systemd and Containers](#quiz-systemd-and-containers)
-- [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -26,5 +25,3 @@
 ## Hands-On Lab: Creating a Systemd Compatible Debian Container
 
 ## QUIZ: Systemd and Containers
-
-## References
