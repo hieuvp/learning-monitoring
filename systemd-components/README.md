@@ -9,7 +9,7 @@
   - [`systemctl`](#systemctl)
   - [Introduction to the systemd Journal](#introduction-to-the-systemd-journal)
   - [`journalctl`](#journalctl)
-  - [More systemd Tools](#more-systemd-tools)
+  - [More `systemd` Tools](#more-systemd-tools)
   - [QUIZ: Systemd Components](#quiz-systemd-components)
 - [Unit Files](#unit-files)
   - [Basics of a Unit File](#basics-of-a-unit-file)
@@ -30,7 +30,7 @@
 
 ### `journalctl`
 
-### More systemd Tools
+### More `systemd` Tools
 
 ### QUIZ: Systemd Components
 
