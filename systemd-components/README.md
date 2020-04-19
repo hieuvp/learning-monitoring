@@ -6,9 +6,9 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [systemd Tools](#systemd-tools)
-  - [systemctl](#systemctl)
+  - [`systemctl`](#systemctl)
   - [Introduction to the systemd Journal](#introduction-to-the-systemd-journal)
-  - [journalctl](#journalctl)
+  - [`journalctl`](#journalctl)
   - [More systemd Tools](#more-systemd-tools)
   - [QUIZ: Systemd Components](#quiz-systemd-components)
 - [Unit Files](#unit-files)
@@ -24,11 +24,11 @@
 
 ## systemd Tools
 
-### systemctl
+### `systemctl`
 
 ### Introduction to the systemd Journal
 
-### journalctl
+### `journalctl`
 
 ### More systemd Tools
 
