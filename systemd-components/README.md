@@ -1,4 +1,4 @@
-# Systemd Components
+# `systemd` Components
 
 ## Table of Contents
 
